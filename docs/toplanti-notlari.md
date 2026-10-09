@@ -6,7 +6,7 @@ Sonraki: **21 Ekim 2026, 13:00** (hocalarla, 15 günde bir). Ekip içi: haftada 
 
 ### Kararlar
 
-- Repo **public** olur. Doğrudan push yalnızca seçili contributor'lara açık, diğerleri PR ile katkı verir. PR'lar review ister (branch protection). Hocalar böylece erişir.
+- Repo **public**: herkes okur. Yazma yetkisi yalnızca seçili collaborator'larda; onlar `main`'e direkt push atar, review zorunlu değil. Dışarıdan katkı fork + PR ile gelir, merge yetkisi yalnızca collaborator'larda. Branch protection kurulmadı (admin kendi PR'ını onaylayamaz).
 - LaTeX ve BibTeX projeye dahil.
 - Agile çalışılır.
 - Literatür taraması ana başlangıç noktası. Makaleler ekip içinde bölüşülür (aşağıda).
@@ -14,7 +14,8 @@ Sonraki: **21 Ekim 2026, 13:00** (hocalarla, 15 günde bir). Ekip içi: haftada 
 ### Todo (21 Ekim'e kadar)
 
 - [ ] Ortak Google Drive/Doc aç, hocaları ekle (rapor yazımı)
-- [ ] Repoyu public yap, branch protection kur (PR + review zorunlu), hocaları ekle (Şükrü Hoca)
+- [x] Repo public yapıldı, erişim kuralları kuruldu
+- [ ] Şükrü Hoca'yı collaborator olarak ekle (isteğe bağlı, repo zaten herkese açık okunur)
 - [ ] Proje yönetim aracı kararı: Trello / Jira / GitHub Projects (araştırma aşağıda)
 - [ ] Literatür taraması + karşılaştırma tablosu taslağı
 - [ ] Public dataset listesi
