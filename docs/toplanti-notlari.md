@@ -31,6 +31,8 @@ Sonraki: **21 Ekim 2026, 13:00** (hocalarla, 15 günde bir). Ekip içi: haftada 
 
 Sahip sütununu doldurun.
 
+**1–6:** Kaynak Proposal'ın (`marker_out/Proposal/Proposal.md`) References bölümünden alındı, web araması yapılmadı. Yeliz Hoca'nın makalesinden alındığı doğrulanmadı.
+
 | # | Kaynak | Sahip |
 |---|--------|-------|
 | 1 | Aljehane vd. 2023, bilişsel yük ve uzmanlık (ETRA) | |
@@ -39,8 +41,13 @@ Sahip sütununu doldurun.
 | 4 | Ahsan & Obaidellah 2023, STA ile kümeleme (ETRA) | |
 | 5 | Eraslan vd. 2016, STA algoritması (ACM TWEB) | |
 | 6 | Eraslan vd. 2020, STA ile otizm tespiti (W4A) | |
-| 7 | Ek tarama: webcam tabanlı gaze tahmini (WebGazer vb.) ve doğruluk | |
-| 8 | Ek tarama: public dataset'ler (EMIP vb.) | |
+
+**Araştırılacak (kaynak henüz yok, tarama yapılıp bulunan kaynaklar bölüşülecek):**
+- Yeliz Hoca'nın makalesi ve onun kaynakça/atıfları
+- Benzer çalışmalar ve benzer uygulamalar
+- Webcam tabanlı göz takibi ve doğruluğu
+- Public dataset'ler
+- Google Meet / Zoom ile video yakalama
 
 Her makale için çıkarılacak: kullanılan dil/framework, algoritma, veri seti, var/yok özellikleri, bizden farkı. Çıktı karşılaştırma tablosuna ve SRS Related Work'e girer.
 
