@@ -1,0 +1,12 @@
+# AI tool rules and local config
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.claude/
+.serena/
+.cursor/
+.cursorrules
+.codex/
+.mcp.json
+.github/copilot-instructions.md
+graphify-out/
