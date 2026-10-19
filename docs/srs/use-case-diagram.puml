@@ -1,0 +1,42 @@
+@startuml use-case-diagram
+' DECODE - SRS 2.2 Use Case Diagram (draft, DEC-24)
+!pragma layout smetana
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Candidate" as Candidate
+actor "Interviewer" as Interviewer
+actor "Researcher" as Researcher
+actor "Videoconferencing\nPlatform" as Platform <<system>>
+
+rectangle "DECODE" {
+  usecase "Give Consent" as UC02
+  usecase "Calibrate Gaze" as UC03
+  usecase "Run Analysis Session" as UC01
+  usecase "Capture Video Streams" as UC04
+  usecase "Map Gaze to Code Lines" as UC05
+  usecase "Classify Experience Level" as UC06
+  usecase "View Classification Report" as UC07
+  usecase "Import Eye-tracking Dataset" as UC08
+  usecase "Generate Trending Paths" as UC09
+  usecase "Evaluate Classification Model" as UC10
+}
+
+UC02 -- Candidate
+UC03 -- Candidate
+Interviewer -- UC01
+Interviewer -- UC07
+Researcher -- UC09
+Researcher -- UC10
+Researcher -- UC08
+
+UC01 ..> UC02 : <<include>>
+UC01 ..> UC03 : <<include>>
+UC01 ..> UC04 : <<include>>
+UC01 ..> UC05 : <<include>>
+UC01 ..> UC06 : <<include>>
+
+UC04 -- Platform
+
+@enduml
