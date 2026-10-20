@@ -9,7 +9,7 @@ Diyagram kaynağı: [use-case-diagram.puml](use-case-diagram.puml)
 - ~~Hedef platform~~ Karar (20 Ekim): Google Meet.
 - Gerçek zamanlı sınıflandırma mı, oturum sonrası analiz mi? (UC-01 ve F6)
 - AOI satır seviyesinde mi, blok seviyesinde mi? Webcam doğruluğuna bağlı (DEC-22).
-- Aday eklentiyle doğrudan etkileşiyor mu (rıza, kalibrasyon), yoksa her şeyi görüşmeci mi yönetiyor?
+- ~~Aday eklentiyle etkileşiyor mu~~ Karar (20 Ekim): adayda kurulum yok; kalibrasyon link ile açılan sayfada, ekran paylaşımından okunur. Rıza da orada mı? (açık)
 - Offline model kısmı (UC-08–UC-10) ürünün parçası mı, yoksa yalnızca araştırma çıktısı mı?
 
 ---
@@ -45,7 +45,7 @@ Diyagram kaynağı: [use-case-diagram.puml](use-case-diagram.puml)
 |---|---|
 | **Actors** | Interviewer (primary), Candidate, Google Meet |
 | **Preconditions** | The extension is installed. Trending paths exist (UC-09). Interviewer and candidate are in the same meeting. |
-| **Main flow** | 1. Interviewer starts an analysis session from the extension. 2. The system asks the candidate for consent (UC-02). 3. The candidate calibrates gaze (UC-03): 3.1 the system shows calibration points one by one; 3.2 the candidate looks at each point; 3.3 the system fits the gaze model; 3.4 the system measures the error on a validation point and accepts it if within the threshold. 4. The candidate shares the code on screen and reads it. 5. The system captures webcam and screen streams (UC-04) and maps gaze to code lines (UC-05). 6. Interviewer ends the session. 7. The system generates the scanpath and classifies the candidate (UC-06). 8. Interviewer views the report (UC-07). |
+| **Main flow** | 1. Interviewer starts an analysis session from the extension. 2. The system asks the candidate for consent (UC-02). 3. The candidate calibrates gaze (UC-03): 3.1 the candidate opens the calibration page from a link and shares their screen; the page shows calibration points one by one; 3.2 the candidate looks at each point; 3.3 the system fits the gaze model; 3.4 the system measures the error on a validation point and accepts it if within the threshold. 4. The candidate shares the code on screen and reads it. 5. The system captures webcam and screen streams (UC-04) and maps gaze to code lines (UC-05). 6. Interviewer ends the session. 7. The system generates the scanpath and classifies the candidate (UC-06). 8. Interviewer views the report (UC-07). |
 | **Alternative flows** | 2a. Candidate declines consent: session is cancelled, nothing is recorded. 3.4a. Calibration error above threshold: the system repeats calibration (at most N times), then warns that results may be unreliable. 5a. Face not detected or gaze quality too low: the system warns the interviewer and offers recalibration. |
 | **Postconditions** | A classification result with similarity scores is available to the interviewer. The calibration error is kept with the result. Raw video is not stored. |
 
