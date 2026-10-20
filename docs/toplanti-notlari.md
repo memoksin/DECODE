@@ -26,7 +26,8 @@ Sonraki: **21 Ekim 2026, 13:00** (hocalarla, 15 günde bir). Ekip içi: haftada 
 
 ### Hocasız toplantı için tartışma
 
-- **Overleaf mı, başka bir LaTeX engine mi?** Hoca premium hesabıyla destek verebilir. Görüş: gereksiz. LaTeX'i elle yazmayacağız, iyi bir engine yeterli. Karar bekliyor.
+- **Overleaf mı, başka bir LaTeX engine mi?** Hoca premium hesabıyla destek verebilir. Görüş: gereksiz. LaTeX'i elle yazmayacağız, iyi bir engine yeterli.
+- Karar (20 Ekim): **SRS Word** şablonuyla teslim edilir. **Son paper LaTeX.** **Google Doc** ortak notlar içindir, hocalar da görür: kararlar, araştırma özetleri, toplantı notları.
 
 ### Literatür bölüşümü
 

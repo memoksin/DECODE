@@ -10,3 +10,6 @@ GEMINI.md
 .mcp.json
 .github/copilot-instructions.md
 graphify-out/
+
+# Copyrighted papers (local only)
+papers/
