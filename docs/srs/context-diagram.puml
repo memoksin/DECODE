@@ -1,0 +1,8 @@
+@startuml
+skinparam shadowing false
+
+rectangle "Google Meet" <<system>> as V
+rectangle "DECODE" as D
+
+V -right- D
+@enduml
