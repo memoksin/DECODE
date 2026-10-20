@@ -20,7 +20,7 @@
         <mxCell id="candidate" value="Candidate" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
           <mxGeometry x="840" y="210" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="platform" value="«system»&lt;br&gt;Videoconferencing&lt;br&gt;Platform" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+        <mxCell id="platform" value="«system»&lt;br&gt;Google Meet" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
           <mxGeometry x="840" y="400" width="30" height="60" as="geometry" />
         </mxCell>
 

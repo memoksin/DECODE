@@ -8,7 +8,7 @@ skinparam shadowing false
 actor "Candidate" as Candidate
 actor "Interviewer" as Interviewer
 actor "Researcher" as Researcher
-actor "Videoconferencing\nPlatform" as Platform <<system>>
+actor "Google Meet" as Platform <<system>>
 
 rectangle "DECODE" {
   usecase "Give Consent" as UC02
