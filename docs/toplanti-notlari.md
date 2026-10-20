@@ -10,18 +10,19 @@ Sonraki: **21 Ekim 2026, 13:00** (hocalarla, 15 günde bir). Ekip içi: haftada 
 - LaTeX ve BibTeX projeye dahil.
 - Agile çalışılır.
 - Literatür taraması ana başlangıç noktası. Makaleler ekip içinde bölüşülür (aşağıda).
+- (20 Ekim, ekip içi) Hedef platform **Google Meet**. Extension görüşmeci tarafında çalışır, videoyu Meet sayfasından okur; ücretli API veya uygulama onayı gerekmez. DEC-16 bu yaklaşımı doğrulayacak.
 
 ### Todo (21 Ekim'e kadar)
 
 - [ ] Ortak Google Drive/Doc aç, hocaları ekle (rapor yazımı)
 - [x] Repo public yapıldı, erişim kuralları kuruldu
 - [ ] Şükrü Hoca'yı collaborator olarak ekle (isteğe bağlı, repo zaten herkese açık okunur)
-- [ ] Proje yönetim aracı kararı: Trello / Jira / GitHub Projects (araştırma aşağıda)
+- [x] Proje yönetim aracı: **Jira** seçildi (decode2026.atlassian.net, proje key `DEC`, Sprint 1: 7–27 Ekim)
 - [ ] Literatür taraması + karşılaştırma tablosu taslağı
 - [ ] Public dataset listesi
 - [ ] Kaynakları BibTeX olarak topla (DOI / online kütüphane export)
 - [ ] Use case diyagramı taslağı
-- [ ] Rol dağılımı: herkes toplantıya rolüyle gelir
+- [x] Rol dağılımı: Mehmet Scrum Master + teknik, İrem teknik, Sude ve Burcu literatür + dataset (görevler Jira Sprint 1)
 
 ### Hocasız toplantı için tartışma
 
