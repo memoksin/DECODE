@@ -100,3 +100,65 @@ Kaynaklar: [Atlassian: Free Jira plan](https://support.atlassian.com/jira-cloud-
 - Hedef parçalara bölünür, rol dağılımı yapılır. Toplantılara bu rolle gelinir (sorumluluk paylaşımı).
 - Dönem sonunda working prototype çıkmalı. Kusursuz olması gerekmez, kabaca gösterilebilmeli.
 - Parçalar ayrı çalışmalı ve birbirine entegre olmalı. **Entegrasyon yoksa puan yok.** Tek parçanın mükemmel olması yetmez.
+
+## Toplantı 2 — 21 Ekim 2026 (hocalarla)
+
+Kaynak: el yazısı notlar (tablet + defter). Okunamayan yerler (?) ile işaretli.
+
+### Kararlar
+
+- Analiz **gerçek zamanlı değil**. STA oturum bitince çalışır. Bu bir limitation sayılmaz.
+- Use case diyagramı:
+  - Researcher aktörü kaldırılır (researcher biziz).
+  - Interviewer için **Open session** eklenir. HR pozisyona göre interview session açar.
+  - Candidate için session use case'i eklenir.
+  - Classify Experience Level ve Map Gaze to Code Lines birleşir (ikisi de sistemin iç işi).
+  - Run Analysis Session birden fazla kez çalışabilir.
+  - Kritik: Run Analysis Session, Generate Trending Paths, Evaluate Classification Model.
+- Session akışı: aday linkten id ile girer. Session ile meeting ayrı olabilir (DB → link/session → meeting).
+- Rapor: aday bazında sonuç (ör. C1 fail, C2 pass) ve trending path'ten **sapma derecesi**.
+- Dataset'leri birleştirmek uygun.
+
+### Video platformu
+
+- Google Meet API/extension açık değil. Açık kaynak alternatif aranır: MiroTalk, Jitsi, OpenMeetings.
+- Kriterler: API açık mı, extend edilebilir mi, video kalitesi iyi alınabilir mi. Jitsi'nin API'si açık.
+- Zoom: add-on olarak düşünülebilir.
+- Open source contribution olarak sunulabilir.
+- Karşılaştırma tablosu yapılır, "neden bunu seçtik" cevaplanır. SRS'e "en az hata payı olanı seçtik" yazılabilir.
+- Gereken minimum kamera çözünürlüğü belirlenir.
+
+### Dataset ve model
+
+- Dataset karşılaştırma tablosu: hangi dataset'te hangi sınıflar var.
+- Birleştirilecek dataset'lerde: aynı dil, expert/non-expert etiketi, aynı task (okuma / merge).
+- Kullanılan tüm dataset'ler rapora eklenir ve anlatılır.
+- Akış: aynı kod için 10 expert + 10 novice trending path → yeni adayın path'i ikisiyle kıyaslanır → benzerliğe göre sınıflanır.
+- Kod farklıysa o koda ayrı trending path gerekir. Dil bağımsız model zor, dile göre ayrı model yapılabilir (Java ✓, Python ✗, JavaScript ✓ (?)).
+- Açık: AI ile dataset üretilebilir mi? Veri azsa model ne olur?
+
+### ERD düzeltmeleri
+
+- User → Interviewer/Researcher: disjoint (d) doğru.
+- `warnings` multivalued attribute olur.
+- AOI / CONTAINS weak entity.
+
+### Todo
+
+- [ ] Meet alternatifleri karşılaştırma tablosu (API, extend, video kalitesi)
+- [ ] Dataset karşılaştırma tablosu (dil, etiket, task)
+- [ ] Use case diyagramını güncelle (yukarıdaki maddeler)
+- [ ] ERD: `warnings` multivalued
+- [ ] Rapora sapma derecesini ekle
+- [ ] Minimum kamera çözünürlüğünü belirle
+
+### Hocaya sorulacak
+
+- Sistem sınırı: tek kutu (DECODE) mu, iki kutu (Videoconf. extension + STA model builder) mu? `<<system>>` kullanımı.
+- Classify + Map Gaze birleşmesi doğru mu?
+- Aynı pozisyona birden fazla aday girerse ne olur?
+
+### Okunamayanlar
+
+- Use case diyagramındaki turuncu not: "Ordan ayrılır" (?)
+- Meet alternatifleri yanında: "ancak … available olur" (?)
