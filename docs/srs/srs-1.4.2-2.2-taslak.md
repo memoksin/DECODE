@@ -1,6 +1,6 @@
 # SRS 1.4.2 + 2.2 — Taslak (DEC-24)
 
-Durum: taslak, 21 Ekim 2026 toplantısında hocalarla gözden geçirilecek. Kaynak: [Proposal.md](../../marker_out/Proposal/Proposal.md), [toplanti-notlari.md](../toplanti-notlari.md).
+Durum: taslak, 21 Ekim 2026 toplantısında hocalarla gözden geçirilecek. Kaynak: [Proposal.md](../../marker_out/Proposal/Proposal.md), [toplantılar](../toplantilar/README.md).
 
 Diyagram kaynağı: [use-case-diagram.puml](use-case-diagram.puml)
 
