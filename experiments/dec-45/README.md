@@ -8,3 +8,4 @@ Put the recording at `rec/me-1080p.mp4`; 720p/480p copies are made there with ff
 Run: `uv run --python 3.12 python run.py rec/me-1080p.mp4`
 Output: `results.csv` (per frame) and a markdown summary table on stdout.
 Control: `uv run --python 3.12 python control.py .` re-encodes 1080p without scaling and measures the same error (noise floor).
+Stability: record ~20 s staring at screen centre, then `uv run --python 3.12 python stability.py rec/a.mp4 rec/b.mp4 ...` (jitter vs median gaze, no reference needed).
