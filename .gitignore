@@ -1,8 +1,8 @@
 # AI tool rules and local config
-CLAUDE.md
 AGENTS.md
 GEMINI.md
-.claude/
+.claude/plans/
+.claude/settings.local.json
 .serena/
 .cursor/
 .cursorrules
