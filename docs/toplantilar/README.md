@@ -15,6 +15,8 @@ Her toplantı ayrı dosya. Geçersiz kararlar silinmez, ⚠ ile işaretlenir.
 ## Geçersiz kararlar
 
 - 20 Ekim "Hedef platform Google Meet" → 21 Ekim: Meet API/extension açık değil, açık kaynak alternatif aranır.
+- 20 Ekim "Kalibrasyon link + ekran paylaşımı" → 23 Ekim ([DEC-44](../dec-44-video-platformu.md)): MiroTalk fork'u, kalibrasyon ve kod bizim client'ta, ekran paylaşımı yok.
+- 21 Ekim "açık kaynak alternatif aranır" → 23 Ekim: **MiroTalk SFU** seçildi ([DEC-44](../dec-44-video-platformu.md)).
 - 13 Ekim "PM aracı Jira" → 22 Ekim: Linear'a geçildi (deneme, aşağıda).
 
 ## Açık konular
