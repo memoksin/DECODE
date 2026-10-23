@@ -5,6 +5,8 @@
 NEW_MODULES = {  # name: (language, SLOC, analog)
     "Calibration page": ("JavaScript", 261, "WebGazer www/ calibration demo"),
     "Consent and result pages": ("JavaScript", 206, "WebGazer heatmap page (103) x 2 pages"),
+    "Code view with line AOIs from the DOM": ("JavaScript", 150, "no analog found, team estimate"),
+    "Backend: upload -> Python job -> report": ("JavaScript", 206, "MiroTalk Server.js rec endpoints"),
     "Gaze pipeline": ("Python", 484, "our DEC-45 code (170) + WebGazer ridge regression (314)"),
     "Fixations and AOI mapping": ("Python", 237, "EMIP-Toolkit AOI + I-DT"),
     "STA and classification": ("Python", 366, "SukruEraslan/sta STA_withToleranceLevel.py"),

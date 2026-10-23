@@ -19,12 +19,14 @@ Todo (when writing the Word report): enter the same inputs into the COCOMO II we
 |---|---|---|---|
 | Calibration page | JavaScript | 261 | WebGazer calibration demo [3] |
 | Consent and result pages | JavaScript | 206 | WebGazer heatmap page (103) × 2 pages [3] |
+| Code view with line AOIs from the DOM | JavaScript | 150 | No analog found, team estimate |
+| Backend: upload → Python job → report | JavaScript | 206 | MiroTalk `Server.js` recording endpoints [7] |
 | Gaze pipeline | Python | 484 | Our DEC-45 gaze code (170) + WebGazer ridge regression to screen (314) [3] |
 | Fixations and AOI mapping | Python | 237 | EMIP-Toolkit AOI mapping and I-DT [4] |
 | STA and classification | Python | 366 | Original STA implementation with tolerance level [5] |
 | Dataset import | Python | 225 | EMIP-Toolkit dataset parsers [4] |
 | Model evaluation | Python | 290 | Eye-tracking classifier training and evaluation script [6] |
-| **Total new** | | **2,069** | |
+| **Total new** | | **2,425** | |
 
 **Adapted code (COCOMO II reuse model)**
 
@@ -43,15 +45,15 @@ MiroTalk SFU already records and uploads video. We adapt this code: the client "
 - AAM = [AA + AAF × (1 + 0.02 × SU × UNFM)] / 100 = [4 + 26 × 1.64] / 100 = 0.466
 - Equivalent SLOC = 826 × 0.466 = **385 ESLOC**
 
-**Total size = 2,069 + 385 = 2,454 SLOC ≈ 2.45 KSLOC**
+**Total size = 2,425 + 385 = 2,810 SLOC ≈ 2.81 KSLOC**
 
 ### 3.3 Basic COCOMO (organic)
 
 The project is organic: a small team, a familiar environment, and no hard hardware or real-time constraints.
 
-- Effort: E = 2.4 × 2.45^1.05 = **6.2 person-months (PM)**
-- Duration: D = 2.5 × 6.2^0.38 = **5.0 months**
-- Average staff: 6.2 / 5.0 = 1.2 full-time people
+- Effort: E = 2.4 × 2.81^1.05 = **7.1 person-months (PM)**
+- Duration: D = 2.5 × 7.1^0.38 = **5.3 months**
+- Average staff: 7.1 / 5.3 = 1.3 full-time people
 
 ### 3.4 COCOMO II.2000 (post-architecture)
 
@@ -81,20 +83,20 @@ The project is organic: a small team, a familiar environment, and no hard hardwa
 | TOOL (software tools) | High | 0.90 | Modern IDEs, git, Linear |
 | **Product (EAF)** | | **1.458** | |
 
-- Effort: PM = 2.94 × 2.45^1.121 × 1.458 = **11.7 PM**
-- Schedule: TDEV = 3.67 × 11.7^(0.28 + 0.2 × 0.211) = **8.1 months**
-- Average staff: 1.4 full-time people
+- Effort: PM = 2.94 × 2.81^1.121 × 1.458 = **13.6 PM**
+- Schedule: TDEV = 3.67 × 13.6^(0.28 + 0.2 × 0.211) = **8.5 months**
+- Average staff: 1.6 full-time people
 
 ### 3.5 Comparison with team capacity
 
 | | Effort | Hours (152 h/PM [2]) | Duration |
 |---|---|---|---|
-| Basic COCOMO | 6.2 PM | 936 h | 5.0 months |
-| COCOMO II | 11.7 PM | 1,782 h | 8.1 months |
+| Basic COCOMO | 7.1 PM | 1,080 h | 5.3 months |
+| COCOMO II | 13.6 PM | 2,075 h | 8.5 months |
 | **Team capacity** | **6.3 PM** | **952 h** | **7 months (28 weeks)** |
 
 - Capacity: 4 students × 28 weeks × 8.5 h/week. 8.5 h/week comes from the Sprint 1 plan: 102 h of estimated tasks for 4 people in 3 weeks.
-- Basic COCOMO fits the capacity. COCOMO II is about 1.9 times higher, mainly because it rates the team as inexperienced (ACAP, PCAP, APEX, PREC, PMAT).
+- Basic COCOMO is about 13% above the capacity. COCOMO II is about 2.2 times the capacity, mainly because it rates the team as inexperienced (ACAP, PCAP, APEX, PREC, PMAT).
 - COCOMO II is our upper bound. To stay within capacity, we build the core path first (F2–F6), reuse existing code where possible (MiroTalk recording, EMIP-Toolkit parsers, the original STA code), and keep the research pipeline (F9, F10) as scripts.
 - We compare these estimates with the hours we log per issue and update them at the end of each sprint.
 
@@ -102,7 +104,7 @@ The project is organic: a small team, a familiar environment, and no hard hardwa
 
 | Input | Value | Source / reason |
 |---|---|---|
-| Size | 2.45 KSLOC | `cloc` on analog open-source code per module, see 3.2 |
+| Size | 2.81 KSLOC | `cloc` on analog open-source code per module, see 3.2; code view (150) is a team estimate |
 | Libraries | 0 SLOC | We only call MediaPipe, L2CS-Net and NumPy, we do not change them |
 | MiroTalk reuse | 826 → 385 ESLOC | COCOMO II reuse model [2] |
 | Hours per PM | 152 | COCOMO II default [2] |
