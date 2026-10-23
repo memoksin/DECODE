@@ -13,3 +13,9 @@ graphify-out/
 
 # Copyrighted papers (local only)
 papers/
+
+# Experiment recordings and model weights (local only, privacy)
+experiments/**/rec/
+experiments/**/models/
+experiments/**/.venv/
+__pycache__/
