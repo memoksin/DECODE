@@ -1,6 +1,6 @@
 # DEC-45 — Minimum kamera çözünürlüğü
 
-Durum: ilk ölçüm bitti (23 Ekim 2026). Gerçek 720p kamera testi bekliyor. Kod: [experiments/dec-45](../experiments/dec-45/).
+Durum: kendi kamerayla ölçümler bitti (23 Ekim 2026). Ekip arkadaşının gerçek 720p laptop kamerası testi bekliyor. Kod: [experiments/dec-45](../experiments/dec-45/).
 
 ## Sonuç
 
@@ -31,6 +31,20 @@ Durum: ilk ölçüm bitti (23 Ekim 2026). Gerçek 720p kamera testi bekliyor. Ko
 - Çözünürlük düşürmek bunun üstüne yaklaşık +1.6° (720p) ve +2.2° (480p) ekliyor. Bunlar kaba tahmin, çünkü sapmalar doğrusal toplanmaz.
 - Karşılaştırma: modelin kendi hatası 2–4°, bir kod satırı ~0.5° ([DEC-22](dec-22-gaze-kutuphaneleri.md)). 720p'deki ek sapma satır bazında takibi imkânsız kılıyor, blok bazında takip mümkün.
 
+## Ek ölçüm: sabit bakışta titreme (gerçek 720p)
+
+Doğrudan 720p kaydında aynı anın 1080p hali olmadığı için yukarıdaki "1080p'den sapma" ölçülemez. Bunun yerine her kayıtta ekranın ortasına 20 sn sabit bakıldı. Her karenin medyan bakış yönünden sapması ölçüldü (`stability.py`). Bu yöntem referans gerektirmez.
+
+| Video (600 kare) | Yüz bulma | Titreme: ort. / medyan / p95 | İris (px) |
+|---|---|---|---|
+| 1080p | %100 | 1.59° / 1.33° / 3.54° | 28.8 |
+| 720p, 1080p'den küçültülmüş | %100 | 1.48° / 1.30° / 2.85° | 19.2 |
+| 720p, kamera doğrudan (native) | %100 | 1.72° / 1.34° / 4.25° | 18.1 |
+
+- Üç kaydın medyan titremesi aynı (~1.3°). Sabit bakışta 720p, 1080p kadar kararlı.
+- Doğrudan 720p'nin uç değerleri daha kötü: p95 4.25°, küçültülmüşte 2.85°. Bu, küçültmenin gürültüyü azalttığını, yani ilk testin iyimser olduğunu doğruluyor. Ama fark yalnızca uç değerlerde görülüyor ve küçük.
+- Titremenin içinde gözün ve başın gerçek küçük hareketleri de var. Tek kayıt, 20 sn.
+
 ## Sınırlamalar
 
 - **Küçültülmüş 720p, gerçek 720p kamera değil.** Küçültme gürültüyü azaltır. Ucuz bir 720p kamera, özellikle kötü ışıkta, daha kötü sonuç verebilir. Bu yüzden 720p sonucu iyimser.
@@ -40,7 +54,7 @@ Durum: ilk ölçüm bitti (23 Ekim 2026). Gerçek 720p kamera testi bekliyor. Ko
 
 ## Todo
 
-- [ ] Mehmet'in kamerasıyla doğrudan 720p kayıt, aynı script.
+- [x] Mehmet'in kamerasıyla doğrudan 720p kayıt (yukarıda, ek ölçüm).
 - [ ] Ekip arkadaşının gerçek 720p laptop kamerasıyla kayıt (biri kötü ışıkta), aynı script.
 
 ## SRS için cümle
