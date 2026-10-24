@@ -55,13 +55,14 @@ Ortak bir "expert" kuralı gerekiyor (aşağıdaki karar 1).
 
 ## Kararlar
 
-1. **Expert tanımı — beklemede (takımla görüşülüyor).** EMIP için seçenekler:
-   - Aljehane vd.'nin medyan 4 yıl kuralı: 101 expert, 90 novice
-   - Öz değerlendirmede "yüksek": %7,9, yaklaşık 17 kişi
-   - İkisinin birleşimi
+1. **EMIP'te expert tanımı — beklemede.** Şükrü Hoca'nın önerdiği seçenekler (24 Ekim):
+   - (a) Öz değerlendirmede "yüksek" diyen 17 kişi + diğerlerinden rastgele seçilen 17 kişi; her gruba ayrı trending path.
+   - (b) 4 yıl ve üstü / altı (Aljehane vd.): 101 expert, 90 novice.
 
-   Peitek ve Busjahn'da grup etiketi hazır.
-2. **Peitek'in experienced grubu expert sayılır mı — beklemede (takımla görüşülüyor).** Lisansüstü öğrenciler; Java medyan 6 yıl, toplam programlama medyan 12 yıl.
+   SRS'te iki seçenek de yazıldı, seçim Sprint 2'de yapılacak.
+2. **Peitek grupları — karar verildi (24 Ekim, Şükrü Hoca).** Yazarların novice / experienced ayrımı olduğu gibi kullanılır.
+
+Hocanın notları: Peitek'te daha çok Java kodu var, EMIP'te katılımcı sayısı daha fazla. EMIP'teki diğer diller farklı dilleri de dahil etme şansı verebilir; ama Aljehane vd.'ye göre Python'da 5, Scala'da 4 katılımcı var.
 3. **EMIP lisansı — karar verildi (24 Ekim):** Raporda iki kaynak da gösterilir. Makale (Bednarik vd. 2020) CC BY-NC-SA, emipws.org CC BY 4.0 diyor.
 
 **Lisans notu (Abid vd. 2019):** CC BY-ND 4.0 "türev yok" demek. Veriyi analiz etmek sorun değil, ama değiştirilmiş veriyi yeniden paylaşmak kısıtlı. Yardımcı veri olarak kullanılırsa raporda belirtilmeli.
