@@ -1,6 +1,6 @@
 # DEC-33 — Public eye-tracking dataset karşılaştırma tablosu
 
-Hazırlayan: Sude. Güncelleme: 24 Ekim 2026. Durum: **taslak v2**.
+Hazırlayan: Sude. Güncelleme: 24 Ekim 2026. Durum: **taslak v3**.
 
 Kriterler (Toplantı 2, 21 Ekim): birleştirilecek dataset'lerde aynı dil, expert/non-expert etiketi, aynı task (okuma / merge). Kapsam: geniş tarama. Uymayanlar da tabloda, nedeniyle birlikte.
 
@@ -13,9 +13,9 @@ Doğrulama düzeyi: 📂 = veri dosyası açılıp kontrol edildi, 📄 = makale
 | **EMIP** — Bednarik vd. 2020 | Java (%95,8), Python, Scala | 216 yayında 📄 | Öz değerlendirme (yok / düşük / orta / yüksek) + programlama yılı 📄 | Var. Katılımcı başına TSV: `Time`, `R POR X/Y [px]`, geçerlilik 📂 (EMTK parser) | Evet: Rectangle, Vehicle | Makale: CC BY-NC-SA; site: CC BY 4.0 | SMI RED250, 250 Hz | [osf.io/53kts](https://osf.io/53kts/) | **Ana aday** |
 | **EMIP düzeltilmiş** — Al Madi vd. 2021 | Java (fixation'ların %99'u), Python | 159 📂 | Dosyada yok. EMIP metadata ile katılımcı no'su üzerinden eşlenir | Yok. Fixation seviyesi: zaman, süre, x, y + token, satır, srcML AOI 📂 | Evet: Rectangle, Vehicle | Belirtilmemiş | SMI RED250 | [EMIP-Toolkit (GitHub)](https://github.com/nalmadi/EMIP-Toolkit), [osf.io/djn9s](https://osf.io/djn9s) | **Ana aday** (AOI hazır) |
 | **Peitek vd. 2020** — okuma sırası | Java | 12 novice + 19 experienced 📂 | Grup: novice / experienced (makalede "intermediate"). Java yılı medyan 3 / 6 📂 | Var. CSV: `Time; Gaze.X; GazeY` 📂 | Evet: 10 program herkese, her biri normal ya da karıştırılmış sürümde 📂. Rectangle ve Vehicle EMIP ile aynı kod 📂 | CC BY-SA 4.0 📂 | Tobii EyeX, 60 Hz | [GitHub](https://github.com/brains-on-code/eyetracking-linearity-replication) | **Aday (güçlü)** |
-| **Busjahn vd. 2015 / Al Madi vd. 2021** — uzunlamasına | Java + pseudo-kod + doğal metin | 14 novice + 6 expert 📄 | Novice: önceki deneyim yok. Expert: 5–28 yıl profesyonel 📄 | ? | Kısmen: expert'ler 6 program, 2'si novice'lerle ortak 📄 | ? | SMI RED-m, 120 Hz | [osf.io/t5je9](https://osf.io/t5je9/) (makaleden, sayfa açılmadı) | **Aday** (veri doğrulanacak) |
+| **Busjahn vd. 2015 / Al Madi vd. 2021** — uzunlamasına | Java + pseudo-kod + doğal metin | 14 novice + 6 expert 📄 | Novice: önceki deneyim yok. Expert: 5–28 yıl profesyonel 📄 | ? | Kısmen: expert'ler 6 program, 2'si novice'lerle ortak 📄 | ? | SMI RED-m, 120 Hz | [osf.io/t5je9](https://osf.io/t5je9/overview) (makaleden; içerik okunamadı) | **Aday** (veri doğrulanacak) |
 | **McChesney & Bond 2021** — disleksi | Java 📂 | 30 (14 disleksili, 16 değil) 📂 | Novice/expert grubu yok. Öz değerlendirme: düşük 3, orta 24, yüksek 3; yıl 0,5–10 📂 | Var. Tobii TSV: zaman, `Gaze point X/Y`, fixation/saccade, AOI isabeti 📂 | Evet: 3 kısa program, sıkışık ya da aralıklı düzen 📂 | Makale CC BY; veri ? | Tobii, 120 Hz 📂 | [figshare](https://doi.org/10.6084/m9.figshare.c.5304473), EMIP-Toolkit içinde | **Yardımcı** (etiket dengesiz) |
-| **Abid vd. 2019** — Java metot özetleme | Java | 13 novice + 5 expert 📄 | Expert: 5+ yıl veya açık kaynak katkılı doktora öğrencisi. Novice: ~1 yıl 📄 | İşlenmiş gaze (iTrace) 📄 | Hayır: 63 metot, kişi başı ~15, IDE'de serbest gezinme 📄 | ? | Tobii X60, 60 Hz | [Zenodo 2550768](https://doi.org/10.5281/zenodo.2550768) (sayfa açılmadı) | **Yardımcı** (task özetleme) |
+| **Abid vd. 2019** — Java metot özetleme | Java | 13 novice + 5 expert 📄 | Expert: 5+ yıl veya açık kaynak katkılı doktora öğrencisi. Novice: ~1 yıl 📄 | İşlenmiş gaze (iTrace) 📄; paket içeriği ? (12,7 MB zip) | Hayır: 63 metot, kişi başı ~15, IDE'de serbest gezinme 📄 | CC BY-ND 4.0 📄 | Tobii X60, 60 Hz | [Zenodo 2550768](https://doi.org/10.5281/zenodo.2550768) | **Yardımcı** (task özetleme) |
 | **Fang vd. 2026** — webcam + Tobii | ? | 49 laboratuvarda + 10 uzaktan 📄 | Yok | CSV, zaman ve gaze alanları; birim ? 📄 | ? | ? | Tobii Pro + WebGazer | [IEEE DataPort](https://ieee-dataport.org/documents/investigating-feasibility-conducting-webcam-based-eye-tracking-studies-code-comprehension) | **Elendi** (abonelik gerekiyor, etiket yok). Webcam referansı olarak kalır |
 | **EyeTrans** — Zhang vd. 2024 | Java | 27 📄 | Yok (öğrenciler, Java testini geçmiş) | "İşlenmemiş veri" denmiş 📄 | Hayır: 162 metot, kişi başı 24–25 | CC BY 4.0 | Tobii Pro Fusion, 60 Hz | [Zenodo 10684985](https://zenodo.org/records/10684985) | **Elendi** (etiket yok, task özetleme) |
 | **EyeContext** — Wallace vd. | Java | 10 📄 | Yok (ort. 2,8 yıl Java) | ? | Hayır: 5 proje, 40 özet | ? | Tobii Pro Fusion, 120 Hz | [Zenodo 14873017](https://zenodo.org/records/14873017) | **Elendi** (etiket yok, task özetleme) |
@@ -53,16 +53,24 @@ Ortak bir "expert" kuralı gerekiyor (aşağıdaki karar 1).
 
 **5. Önceki çelişki çözüldü.** EMIP sitesi 254 geçerli katılımcı ve %15 yayınlanmamış veri diyor; 254 × 0,85 ≈ 216, yani makaledeki sayı. Raporda 216 yazılabilir.
 
-## Karar bekleyenler
+## Kararlar
 
-1. **Expert tanımı:** EMIP için Aljehane vd.'nin medyan 4 yıl kuralı mı, öz değerlendirme mi ("yüksek" çok az: %7,9)? Peitek ve Busjahn'da grup etiketi hazır.
-2. **Peitek'in experienced grubu expert sayılır mı?** Lisansüstü öğrenciler; Java medyan 6 yıl, toplam programlama medyan 12 yıl.
-3. **EMIP lisansı:** Makale CC BY-NC-SA, site CC BY 4.0. Öneri: ikisini de yazıp siteye atıf yapmak.
+1. **Expert tanımı — beklemede (takımla görüşülüyor).** EMIP için seçenekler:
+   - Aljehane vd.'nin medyan 4 yıl kuralı: 101 expert, 90 novice
+   - Öz değerlendirmede "yüksek": %7,9, yaklaşık 17 kişi
+   - İkisinin birleşimi
+
+   Peitek ve Busjahn'da grup etiketi hazır.
+2. **Peitek'in experienced grubu expert sayılır mı — beklemede (takımla görüşülüyor).** Lisansüstü öğrenciler; Java medyan 6 yıl, toplam programlama medyan 12 yıl.
+3. **EMIP lisansı — karar verildi (24 Ekim):** Raporda iki kaynak da gösterilir. Makale (Bednarik vd. 2020) CC BY-NC-SA, emipws.org CC BY 4.0 diyor.
+
+**Lisans notu (Abid vd. 2019):** CC BY-ND 4.0 "türev yok" demek. Veriyi analiz etmek sorun değil, ama değiştirilmiş veriyi yeniden paylaşmak kısıtlı. Yardımcı veri olarak kullanılırsa raporda belirtilmeli.
 
 ## Açık kalanlar
 
 - EMIP ham dosyası ve `emip_metadata.csv` (OSF) çalışma alanından indirilemedi. Kolon bilgisi EMTK parser kodundan ve site açıklamasından.
-- Busjahn/Al Madi OSF (t5je9) ve Abid Zenodo (2550768) sayfaları açılamadı; erişim için linklerin elle açılması gerekiyor.
+- Busjahn/Al Madi OSF (t5je9): sayfa JavaScript ile yükleniyor, dosya listesi ve lisans okunamadı. Tarayıcıdan bakılıp dosya listesi not edilmeli.
+- Abid Zenodo (2550768): lisans ve dosya boyutu doğrulandı. Zip'in içi (ham gaze mi, fixation mı) açılmadı.
 - McChesney figshare sayfası açılamadı; Tobii modeli ve veri lisansı ?.
 - Veri azsa ne olur, AI ile veri üretimi: DEC-46.
 
