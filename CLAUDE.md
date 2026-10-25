@@ -8,7 +8,7 @@
 - Estimate: 1 point = 1 hour
 - Role labels: teknik-lider (Mehmet), teknik-tasarim (İrem), literatur-veri (Sude), literatur-kalite (Burcu). Label every new task; shared tasks get none
 - Time spent: comment `⏱ Xh — note` on each finished issue (SRS 5.2 needs hours)
-- Supervisor (2026-10-25): team may write the report and make burndown charts itself. Story points: no clear answer; SRS uses hours, may switch to story points later
+- Supervisor (2026-10-25): team may write the report and make burndown charts itself. Story points: no clear answer; ask in person 2026-10-26. If accepted → story points only, no hours; if not → back to Jira with real hours and estimates. SRS uses hours
 
 ## Knowledge base
 

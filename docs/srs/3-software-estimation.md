@@ -19,7 +19,7 @@ Todo (when writing the Word report): enter the same inputs into the COCOMO II we
 |---|---|---|---|
 | Calibration page | JavaScript | 261 | WebGazer calibration demo [3] |
 | Consent and result pages | JavaScript | 206 | WebGazer heatmap page (103) × 2 pages [3] |
-| Code view with line AOIs from the DOM | JavaScript | 150 | No analog found, team estimate |
+| Code view with code-block AOIs from the DOM | JavaScript | 150 | No analog found, team estimate |
 | Backend: upload → Python job → report | JavaScript | 206 | MiroTalk `Server.js` recording endpoints [7] |
 | Gaze pipeline | Python | 484 | Our DEC-45 gaze code (170) + WebGazer ridge regression to screen (314) [3] |
 | Fixations and AOI mapping | Python | 237 | EMIP-Toolkit AOI mapping and I-DT [4] |
