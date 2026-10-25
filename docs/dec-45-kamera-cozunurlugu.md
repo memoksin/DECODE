@@ -81,6 +81,13 @@ Aynı yöntem (`stability.py`, ekranın ortasına sabit bakış). Ekip arkadaş�
 - [x] Mehmet'in kamerasıyla doğrudan 720p kayıt (yukarıda, ek ölçüm).
 - [x] Ekip arkadaşının gerçek 720p laptop kamerasıyla kayıt (biri kötü ışıkta), aynı script (yukarıda).
 
+Sprint 2 adayları (25 Ekim, Mehmet ile konuşuldu). Sorun medyanda değil, p95'teki sıçramalarda; önce modeli değil sinyali iyileştir:
+- [ ] Zamansal filtre (One Euro veya Kalman): mevcut kayıtlarda p95 düşüyor mu, `stability.py` ile ölç.
+- [ ] Göz kırpma tespiti: MediaPipe göz kapağı noktalarıyla kırpma karelerini at.
+- [ ] Minimum fixation süresi: çok kısa bakışları fixation sayma (fixation tespitiyle birlikte, F5).
+- [ ] Ancak bunlar yetmezse: L2CS'yi küçültülmüş etiketli dataset'lerle (Gaze360, MPIIFaceGaze) ince ayar. Etiketli veri gerekir, haftalar sürer.
+- [ ] Kontrol: blok AOI'leri gaze hatasından (2–4° + sıçrama) büyük mü? STA girdisi buna bağlı.
+
 ## SRS için cümle
 
 > The candidate's webcam must provide at least 1280×720 at 30 fps; 1920×1080 is recommended. In our measurement, downscaling from 1080p to 720p added about 1.6° of gaze deviation and to 480p about 2.2°, on top of a 2–4° model error, so gaze is mapped to code blocks rather than single lines. On a second team member's native 720p laptop camera, including a dim-light recording, the face was detected in every frame and median fixation jitter matched ours (1.3°), while 95th-percentile jitter was about twice as high (8.5° vs 4.3°).
