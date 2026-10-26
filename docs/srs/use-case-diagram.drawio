@@ -1,103 +1,79 @@
 <mxfile host="app.diagrams.net">
   <diagram id="usecase" name="Use Case Diagram">
-    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="620" math="0" shadow="0">
+    <mxGraphModel dx="1269" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="420" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- System boundary -->
-        <mxCell id="sys" value="DECODE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;fontStyle=1;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="170" y="10" width="580" height="540" as="geometry" />
+        <mxCell id="sys" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;fontStyle=1;fontSize=14;" value="DECODE" vertex="1">
+          <mxGeometry height="360" width="580" x="170" y="10" as="geometry" />
         </mxCell>
-
-        <!-- Actors -->
-        <mxCell id="interviewer" value="Interviewer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="90" width="30" height="60" as="geometry" />
+        <mxCell id="interviewer" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Interviewer" vertex="1">
+          <mxGeometry height="60" width="30" x="60" y="150" as="geometry" />
         </mxCell>
-        <mxCell id="researcher" value="Researcher" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="370" width="30" height="60" as="geometry" />
+        <mxCell id="candidate" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="Candidate" vertex="1">
+          <mxGeometry height="60" width="30" x="840" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="candidate" value="Candidate" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
-          <mxGeometry x="840" y="210" width="30" height="60" as="geometry" />
+        <mxCell id="platform" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="«system»&lt;br&gt;MiroTalk" vertex="1">
+          <mxGeometry height="60" width="30" x="840" y="235" as="geometry" />
         </mxCell>
-        <mxCell id="platform" value="«system»&lt;br&gt;Google Meet" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
-          <mxGeometry x="840" y="400" width="30" height="60" as="geometry" />
+        <mxCell id="uc00" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Open Session" vertex="1">
+          <mxGeometry height="50" width="200" x="200" y="70" as="geometry" />
         </mxCell>
-
-        <!-- Use cases: left column -->
-        <mxCell id="uc01" value="Run Analysis Session" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="60" width="200" height="50" as="geometry" />
+        <mxCell id="uc01" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Run Analysis Session" vertex="1">
+          <mxGeometry height="50" width="200" x="200" y="155" as="geometry" />
         </mxCell>
-        <mxCell id="uc07" value="View Classification Report" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="140" width="200" height="50" as="geometry" />
+        <mxCell id="uc07" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="View Classification Report" vertex="1">
+          <mxGeometry height="50" width="200" x="200" y="240" as="geometry" />
         </mxCell>
-        <mxCell id="uc08" value="Import Eye-tracking Dataset" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="300" width="200" height="50" as="geometry" />
+        <mxCell id="uc02" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Give Consent" vertex="1">
+          <mxGeometry height="50" width="210" x="510" y="35" as="geometry" />
         </mxCell>
-        <mxCell id="uc09" value="Generate Trending Paths" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="380" width="200" height="50" as="geometry" />
+        <mxCell id="uc03" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Calibrate Gaze" vertex="1">
+          <mxGeometry height="50" width="210" x="510" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="uc10" value="Evaluate Classification Model" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="460" width="200" height="50" as="geometry" />
+        <mxCell id="uc06" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Read Code" vertex="1">
+          <mxGeometry height="50" width="210" x="510" y="165" as="geometry" />
         </mxCell>
-
-        <!-- Use cases: right column -->
-        <mxCell id="uc06" value="Classify Experience Level" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="510" y="40" width="210" height="50" as="geometry" />
+        <mxCell id="uc04" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Capture Video Streams" vertex="1">
+          <mxGeometry height="50" width="210" x="510" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="uc05" value="Map Gaze to Code Lines" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="510" y="120" width="210" height="50" as="geometry" />
+        <mxCell id="uc05" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Analyze Gaze on Code" vertex="1">
+          <mxGeometry height="50" width="210" x="510" y="295" as="geometry" />
         </mxCell>
-        <mxCell id="uc02" value="Give Consent" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="510" y="200" width="210" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="uc03" value="Calibrate Gaze" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="510" y="280" width="210" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="uc04" value="Capture Video Streams" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="510" y="400" width="210" height="50" as="geometry" />
-        </mxCell>
-
-        <!-- Associations (plain lines) -->
-        <mxCell id="a1" style="endArrow=none;html=1;" edge="1" parent="1" source="interviewer" target="uc01">
+        <mxCell id="a0" edge="1" parent="1" source="interviewer" style="endArrow=none;html=1;" target="uc00">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a2" style="endArrow=none;html=1;" edge="1" parent="1" source="interviewer" target="uc07">
+        <mxCell id="a1" edge="1" parent="1" source="interviewer" style="endArrow=none;html=1;" target="uc01">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a3" style="endArrow=none;html=1;" edge="1" parent="1" source="researcher" target="uc08">
+        <mxCell id="a2" edge="1" parent="1" source="interviewer" style="endArrow=none;html=1;" target="uc07">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a4" style="endArrow=none;html=1;" edge="1" parent="1" source="researcher" target="uc09">
+        <mxCell id="a6" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;" target="uc02">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a5" style="endArrow=none;html=1;" edge="1" parent="1" source="researcher" target="uc10">
+        <mxCell id="a7" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;" target="uc03">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a6" style="endArrow=none;html=1;" edge="1" parent="1" source="candidate" target="uc02">
+        <mxCell id="a9" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;" target="uc06">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a7" style="endArrow=none;html=1;" edge="1" parent="1" source="candidate" target="uc03">
+        <mxCell id="a8" edge="1" parent="1" source="platform" style="endArrow=none;html=1;" target="uc04">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="a8" style="endArrow=none;html=1;" edge="1" parent="1" source="platform" target="uc04">
+        <mxCell id="i1" edge="1" parent="1" source="uc01" style="endArrow=open;dashed=1;html=1;endSize=10;" target="uc02" value="«include»">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Includes (dashed, open arrow, base -> included) -->
-        <mxCell id="i1" value="«include»" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="uc01" target="uc06">
+        <mxCell id="i2" edge="1" parent="1" source="uc01" style="endArrow=open;dashed=1;html=1;endSize=10;" target="uc03" value="«include»">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="i2" value="«include»" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="uc01" target="uc05">
+        <mxCell id="i6" edge="1" parent="1" source="uc01" style="endArrow=open;dashed=1;html=1;endSize=10;" target="uc06" value="«include»">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="i3" value="«include»" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="uc01" target="uc02">
+        <mxCell id="i3" edge="1" parent="1" source="uc01" style="endArrow=open;dashed=1;html=1;endSize=10;" target="uc04" value="«include»">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="i4" value="«include»" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="uc01" target="uc03">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="i5" value="«include»" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="uc01" target="uc04">
+        <mxCell id="i4" edge="1" parent="1" source="uc01" style="endArrow=open;dashed=1;html=1;endSize=10;" target="uc05" value="«include»">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
