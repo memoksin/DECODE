@@ -20,18 +20,18 @@ Table 1 describes the datasets and Table 2 shows their access and our decision.
 
 **Table 1.** Public eye-tracking datasets on code reading.
 
-| Dataset | Language | Participants | Experience labels | Raw gaze (x, y, time) | Same code for all |
-|---|---|---|---|---|---|
-| EMIP [1] | Java (95.8%), Python, Scala | 216 | Self-rated expertise, years of programming | Yes | Yes: 2 programs |
-| Corrected EMIP [2] | Java, Python | 159 | Via EMIP metadata | No, fixations mapped to tokens and lines | Yes: 2 programs |
-| Peitek et al. [3] | Java | 12 novice, 19 experienced | Group labels | Yes | Yes: 10 programs |
-| Busjahn et al. [4], [5] | Java, pseudocode | 14 novice, 6 expert | Group labels | n/r | Partly: 2 of 6 programs shared |
-| McChesney & Bond [6] | Java | 30 (14 with dyslexia) | Self-rated, mostly "medium" | Yes | Yes: 3 programs |
-| Abid et al. [7] | Java | 13 novice, 5 expert | Group labels | Processed (iTrace) | No: 63 methods |
-| Fang et al. [8] | n/r | 49 lab, 10 remote | None | Yes | n/r |
-| EyeTrans [9] | Java | 27 | None | Yes | No: 162 methods |
-| Wallace et al. [10] | Java | 10 | None | n/r | No: 40 summaries |
-| Al Madi & Khan [11] | English text, no code | 8 | n/r | Yes | n/a |
+| Dataset | Language | Participants | Experience labels | Raw gaze (x, y, time) | Same code for all | AOI level |
+|---|---|---|---|---|---|---|
+| EMIP [1] | Java (95.8%), Python, Scala | 216 | Self-rated expertise, years of programming | Yes | Yes: 2 programs | Token, with line numbers [2]; can be grouped into blocks |
+| Corrected EMIP [2] | Java, Python | 159 | Via EMIP metadata | No, fixations mapped to tokens and lines | Yes: 2 programs | Token and line; can be grouped into blocks |
+| Peitek et al. [3] | Java | 12 novice, 19 experienced | Group labels | Yes | Yes: 10 programs | Line and block (blocks already defined) |
+| Busjahn et al. [4], [5] | Java, pseudocode | 14 novice, 6 expert | Group labels | n/r | Partly: 2 of 6 programs shared | Token [5]; data not checked |
+| McChesney & Bond [6] | Java | 30 (14 with dyslexia) | Self-rated, mostly "medium" | Yes | Yes: 3 programs | Line and code part; can be grouped into blocks |
+| Abid et al. [7] | Java | 13 novice, 5 expert | Group labels | Processed (iTrace) | No: 63 methods | Line and column (iTrace) |
+| Fang et al. [8] | n/r | 49 lab, 10 remote | None | Yes | n/r | n/r |
+| EyeTrans [9] | Java | 27 | None | Yes | No: 162 methods | Token |
+| Wallace et al. [10] | Java | 10 | None | n/r | No: 40 summaries | Token |
+| Al Madi & Khan [11] | English text, no code | 8 | n/r | Yes | n/a | n/a |
 
 n/r = not reported, n/a = not applicable.
 
@@ -55,7 +55,7 @@ n/r = not reported, n/a = not applicable.
 - **Language.** All candidate datasets use Java, so DECODE's first model is for Java.
 - **Primary dataset.** EMIP [1] is the largest dataset that meets all three criteria: 216 participants read the same two Java programs, Rectangle and Vehicle, on the same eye tracker.
 - **Shared code.** Peitek et al. [3] use the same Rectangle and Vehicle classes as EMIP, and most of their programs come from Busjahn et al. [4]. These datasets can therefore be merged on the same code.
-- **Layout differs.** The same code is laid out differently in each dataset: in EMIP, short methods are written on one line. Line-level areas of interest (AOIs) do not match across datasets, but method or block AOIs do. This supports block-level AOIs, which also suit webcam gaze: Fang et al. found that webcam data captures patterns at the semantic level but struggles at the token level [8].
+- **Layout differs.** The same code is laid out differently in each dataset: in EMIP, short methods are written on one line. Line-level areas of interest (AOIs) do not match across datasets, but method or block AOIs do. Peitek et al. already define block AOIs, and the token and line AOIs of EMIP and McChesney & Bond can be grouped into blocks. This supports block-level AOIs, which also suit webcam gaze: Fang et al. found that webcam data captures patterns at the semantic level but struggles at the token level [8].
 - **Eye trackers differ.** The datasets use eye trackers at 60, 120 and 250 Hz, so fixations will be computed again from raw gaze with one I-DT setting for all datasets.
 - **Experience groups.** Peitek et al. and Busjahn et al. provide novice and experienced groups, and we use them as given. EMIP has no such labels, so we will build the groups from its questionnaire in one of two ways: the 17 participants who rated their expertise "high" and 17 randomly selected others, or participants with four or more years of programming and those with less, as in Aljehane et al. [12].
 - **Licences.** Both EMIP licences are reported. Abid et al. [7] do not allow modified data to be redistributed, so we would only analyse it.
