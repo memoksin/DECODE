@@ -8,7 +8,7 @@ Rol: Literatür + Veri (`literatur-veri`). Veri hattı (ham gaze → fixation �
 |---|---|
 | [dec-33-dataset-karsilastirma.md](dec-33-dataset-karsilastirma.md) | DEC-33 çalışma notu (Türkçe): 10 veri setinin tam karşılaştırması, doğrulama düzeyi, bulgular, kararlar, kaynaklar |
 | [bulgular-emip-sta.md](bulgular-emip-sta.md) | EMIP'te aynı kod, EMIP ile Peitek'te ortak kod, düzeltilmiş EMIP, STA'nın girdi formatı, EMIP deneyim soruları |
-| [hoca-yazismalari.md](hoca-yazismalari.md) | Şükrü Hoca'nın uzmanlık ayrımı önerileri, EMIP lisans kararı, Muhammed Hoca'ya mail |
+| [hoca-yazismalari.md](hoca-yazismalari.md) | Şükrü Hoca'nın uzmanlık ayrımı önerileri, EMIP lisans kararı |
 | [DEC-33-related-work-datasets.docx](DEC-33-related-work-datasets.docx) | SRS dataset bölümünün Word hali (rapora yapıştırmak ve hocaya göndermek için) |
 
 SRS bölümünün kendisi ekibin düzenine uygun olarak [docs/srs/related-work-datasets.md](../srs/related-work-datasets.md) içinde (İngilizce, iki tablo, yöntem paragrafı, 13 kaynak).
@@ -40,7 +40,6 @@ Güncel takip Linear'da (`CLAUDE.md`); bu liste Jira arşivinden alındı.
 - **Kararlar:**
   - EMIP lisansı: iki kaynak da gösterilir.
   - Peitek grupları: olduğu gibi kullanılır (Şükrü Hoca).
-- **Muhammed Hoca'ya mail hazırlandı:** Tablonun SRS'teki yeri soruldu.
 - **Şablon incelemesi:** CNG491 SRS şablonu incelendi. Tablonun yeri büyük ihtimalle 1.3 Related Work (Burcu, DEC-36).
 
 ### 26 Ekim 2026
@@ -51,7 +50,7 @@ Güncel takip Linear'da (`CLAUDE.md`); bu liste Jira arşivinden alındı.
 ## Açık işler
 
 - [ ] EMIP'te expert tanımı: "yüksek" 17 + rastgele 17 mi, 4 yıl kuralı mı? (Sprint 2)
-- [ ] Muhammed Hoca'nın cevabına göre tabloyu SRS'te yerleştir; bölümü ve 13 kaynağı Burcu'ya ilet (DEC-36, DEC-34)
+- [ ] Tablonun SRS'teki yerini netleştir; bölümü ve 13 kaynağı Burcu'ya ilet (DEC-36, DEC-34)
 - [ ] Busjahn / Al Madi OSF (t5je9) dosya listesini tarayıcıdan kontrol et
 - [ ] EMIP ham dosyası ve `emip_metadata.csv` indirilecek (OSF)
 - [ ] DEC-29: 1.4.3–1.4.5 taslağı (1.2 Scope'taki limitasyonlarla çakışmasın; kullanıcılar: Interviewer, Candidate)

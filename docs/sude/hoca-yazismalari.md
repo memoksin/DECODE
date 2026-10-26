@@ -26,25 +26,3 @@ Ek notlar:
 ## 24 Ekim 2026 — EMIP lisansı (ekip kararı)
 
 Raporda iki kaynak da gösterilir: makale CC BY-NC-SA, emipws.org CC BY 4.0.
-
-## 24 Ekim 2026 — Muhammed Hoca: tablonun SRS'teki yeri
-
-Hazırlanan mail (ekinde `DEC-33-related-work-datasets.docx`):
-
-> **Subject:** DECODE SRS – Dataset comparison table
->
-> Dear Dr. Muhammed,
->
-> I am Sude İlayda Mete from the DECODE team. We prepared a comparison table of public eye-tracking datasets collected during code reading. Since our graduation project is research-based, we would like to include this table in our SRS report.
->
-> Could you advise us on which section of the SRS would be the most suitable place for it?
->
-> I have attached a draft of the table.
->
-> Kind regards,
-> Sude İlayda Mete
-> DECODE Team
-
-**Cevap:** gönderildiyse bekleniyor.
-
-Bizim önerimiz (mailde yazmadık): şablonda 1.3 Related Work, alt başlık olarak "1.3.2 Public Eye-Tracking Datasets". 1.3 Burcu'da (DEC-36).
