@@ -13,18 +13,27 @@ Rol: Literatür + Veri (`literatur-veri`). Veri hattı (ham gaze → fixation �
 
 SRS bölümünün kendisi ekibin düzenine uygun olarak [docs/srs/related-work-datasets.md](../srs/related-work-datasets.md) içinde (İngilizce, iki tablo, yöntem paragrafı, 13 kaynak).
 
-## Atanan işler (Jira, 24 Ekim 2026)
+## Atanan işler (Linear, 26 Ekim 2026)
 
-Güncel takip Linear'da (`CLAUDE.md`); bu liste Jira arşivinden alındı.
+Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 
-| Anahtar | İş | Tahmin | Durum |
-|---|---|---|---|
-| DEC-27 | 6 proposal makalesini oku | 6h | In Progress |
-| DEC-28 | Yeni tarama: göz takibiyle deneyim sınıflandırma + Yeliz Hoca'nın makalesi ve atıfları | 6h | To Do |
-| DEC-29 | SRS 1.4.3–1.4.5 User characteristics, limitations, assumptions | 2h | To Do |
-| DEC-30 | SRS sunumu (11 slayt), son tarih 27 Ekim | 3h | To Do |
-| DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | 4h | Taslak hazır, PR bekliyor |
-| DEC-46 | Veri az olursa: birleştirme kriterleri ve AI ile veri üretme | — | To Do |
+| Anahtar | İş | Proje | Puan | Durum (Linear) | Not |
+|---|---|---|---|---|---|
+| DEC-29 | SRS 1.4.3–1.4.5 User characteristics, limitations, assumptions | SRS Raporu | 2 | Todo | En fazla 3 kullanıcı tipi; 3–5 limitasyon; 2–3 varsayım + 2–3 bağımlılık |
+| DEC-30 | SRS sunumu (11 slayt) | SRS Raporu | 3 | Todo | Son tarih 27 Ekim |
+| DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | Dataset | 4 | Todo | Taslak hazır. Mehmet tabloya "AOI seviyesi" sütunu istiyor (aşağıda) |
+| DEC-46 | Veri az olursa: birleştirme kriterleri ve AI ile veri üretme | Dataset | 2 | Todo | |
+| DEC-28 | Yeni tarama: göz takibiyle deneyim sınıflandırma + Yeliz Hoca'nın makalesi ve atıfları | Literatür Taraması | 6 | Todo | Mehmet'in önerisi: Fang vd. 2026 |
+| DEC-27 | 6 proposal makalesini oku | Literatür Taraması | 6 | Paused | |
+| DEC-40 | Kod parçasından bağımsız (code-agnostic) AOI ve trending path | Teknik Araştırma | — | Backlog | Sprint 1 dışı |
+
+**Mehmet'in DEC-33 yorumu (25 Ekim):** Dataset tablosuna **AOI seviyesi** sütunu (satır / blok / yok) eklenmeli. DEC-45 kararıyla adayın bakışı kod bloklarına eşlenecek; trending path aynı birimde olmalı. Satır seviyesindeki dataset'lerin bloklara toplanıp toplanamayacağı da not edilmeli. Açık soru DEC-40'ta.
+
+**DEC-40'taki sorular:**
+
+- Dataset'teki satır AOI'leri semantik bloklara (fonksiyon imzası, döngü, koşul, return) nasıl eşlenir?
+- Farklı kod parçalarından gelen scanpath'ler tek trending path'te birleşebilir mi?
+- Literatürde içerikten bağımsız AOI ile STA kullanımı var mı?
 
 ## Çalışma günlüğü
 
@@ -45,7 +54,7 @@ Güncel takip Linear'da (`CLAUDE.md`); bu liste Jira arşivinden alındı.
 ### 26 Ekim 2026
 
 - Bu klasör açıldı, tüm çalışmalar buraya toplandı.
-- Linear bilgileri: connector bağlandıktan sonra eklenecek.
+- Linear bağlandı; atanan işler, Mehmet'in DEC-33 yorumu ve DEC-40 eklendi.
 
 ## Açık işler
 
@@ -55,5 +64,6 @@ Güncel takip Linear'da (`CLAUDE.md`); bu liste Jira arşivinden alındı.
 - [ ] EMIP ham dosyası ve `emip_metadata.csv` indirilecek (OSF)
 - [ ] DEC-29: 1.4.3–1.4.5 taslağı (1.2 Scope'taki limitasyonlarla çakışmasın; kullanıcılar: Interviewer, Candidate)
 - [ ] DEC-30: SRS sunumu (27 Ekim)
+- [ ] DEC-33: tabloya "AOI seviyesi" sütunu ekle, satır → blok toplanabilirliğini not et (Mehmet'in yorumu)
 - [ ] DEC-33 bitince süre yorumu: `⏱ Xh — not`
 - [ ] DEC-46: veri az olursa ne olur, AI ile veri üretimi
