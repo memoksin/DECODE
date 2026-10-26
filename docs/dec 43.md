@@ -22,11 +22,11 @@
 
 # **Platform Selection Rationale** 
 
-A core architectural requirement of the DECODE system is capturing candidate facial video at **uncompressed, raw quality** on the client side before network packetization, ensuring stable gaze extraction and calibration accuracy. Closed commercial solutions like Zoom and Google Meet impose sandboxed restrictions that block direct access to raw image frames (pixel arrays / HTML5 Canvas buffers) or require commercial SDK tiers. Among open-source alternatives, Apache OpenMeetings introduces operational overhead through its legacy Java/Tomcat and Kurento architecture, while offering an outdated guest interface. Jitsi Meet provides an established WebRTC stack, but its microservice configuration (Jicofo, Prosody, Videobridge) and heavy UI layers complicate client-side pipeline injection. 
+Platform Selection Rationale
 
-**MiroTalk SFU** was selected because its Node.js and Mediasoup architecture is lightweight and modular. It allows candidate webcam frames to be extracted directly in the browser DOM for local calibration and gaze tracking, while providing native /recSync endpoints and JWT authentication (rec-upload) to store high-resolution (FHD/4K) session archives on the server. 
+DECODE requires access to the candidate’s raw webcam video in the browser before network encoding, so that gaze estimation is not affected by compression artefacts. Closed or proprietary solutions (Zoom, Google Meet) restrict client-side access to raw camera frames. Among open-source alternatives, Apache OpenMeetings limits webcam resolution to 1024×768 and relies on a legacy Java/Kurento stack. Jitsi Meet requires orchestrating multiple services (Jicofo, Prosody, Jitsi Videobridge) and does not provide a ready-made local recording pipeline.
 
-Furthermore, MiroTalk SFU operates without requiring third-party browser plugins or client installations, and its AGPL v3 license satisfies project self-hosting requirements. 
+MiroTalk SFU was selected because it is self-hosted, open-source (AGPL v3), and provides direct access to the local camera stream via the browser’s getUserMedia API. The candidate’s video is recorded locally in the browser using MediaRecorder and uploaded to the server in chunks after the session ends. No client installation is required; the candidate joins via a link. This architecture ensures that gaze data quality depends only on the candidate’s camera, not on network conditions.
 
 # **NASIL HAZIRLANDI VE YAPILMASI GEREKEN DUZENLEMELER:** 
 
