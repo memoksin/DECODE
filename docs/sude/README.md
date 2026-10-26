@@ -19,7 +19,10 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 
 | Anahtar | İş | Proje | Puan | Durum (Linear) | Not |
 |---|---|---|---|---|---|
-| DEC-29 | SRS 1.4.3–1.4.5 User characteristics, limitations, assumptions | SRS Raporu | 2 | Todo | En fazla 3 kullanıcı tipi; 3–5 limitasyon; 2–3 varsayım + 2–3 bağımlılık |
+| DEC-29 | SRS 1.4.3 User characteristics | SRS Raporu | 1 | Todo | En fazla 3 kullanıcı tipi; programlama geçmişi, erişilebilirlik. 26 Ekim'de daraltıldı |
+| DEC-47 | SRS 2.3 Usability requirements | SRS Raporu | 1 | Todo | Yeni (26 Ekim, DEC-25'ten ayrıldı). En fazla 3 ölçülebilir metrik (effectiveness, efficiency, satisfaction), her birine 1 gerekçe; 1.4.3 ile tutarlı. Burcu'nun taslağı: `docs/DEC 25.md` |
+| DEC-50 | SRS 1.4.4 Limitations | SRS Raporu | 1 | Todo | Yeni (26 Ekim, DEC-29'dan ayrıldı). 3–5 madde |
+| DEC-51 | SRS 1.4.5 Assumptions and dependencies | SRS Raporu | 1 | Todo | Yeni (26 Ekim, DEC-29'dan ayrıldı). 2–3 varsayım + 2–3 bağımlılık |
 | DEC-30 | SRS sunumu (11 slayt) | SRS Raporu | 3 | Todo | Son tarih 27 Ekim |
 | DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | Dataset | 4 | Todo | Taslak hazır. Mehmet tabloya "AOI seviyesi" sütunu istiyor (aşağıda) |
 | DEC-46 | Veri az olursa: birleştirme kriterleri ve AI ile veri üretme | Dataset | 2 | Todo | |
