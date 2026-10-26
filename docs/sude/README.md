@@ -19,12 +19,12 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 
 | Anahtar | İş | Proje | Puan | Durum (Linear) | Not |
 |---|---|---|---|---|---|
-| DEC-29 | SRS 1.4.3 User characteristics | SRS Raporu | 1 | Todo | En fazla 3 kullanıcı tipi; programlama geçmişi, erişilebilirlik. 26 Ekim'de daraltıldı |
-| DEC-47 | SRS 2.3 Usability requirements | SRS Raporu | 1 | Todo | Yeni (26 Ekim, DEC-25'ten ayrıldı). En fazla 3 ölçülebilir metrik (effectiveness, efficiency, satisfaction), her birine 1 gerekçe; 1.4.3 ile tutarlı. Burcu'nun taslağı: `docs/DEC 25.md` |
+| DEC-29 | SRS 1.4.3 User characteristics | SRS Raporu | 1 | Done (⏱ 2h) | En fazla 3 kullanıcı tipi; programlama geçmişi, erişilebilirlik. 26 Ekim'de daraltıldı |
+| DEC-47 | SRS 2.3 Usability requirements | SRS Raporu | 1 | In Progress | Yeni (26 Ekim, DEC-25'ten ayrıldı). En fazla 3 ölçülebilir metrik (effectiveness, efficiency, satisfaction), her birine 1 gerekçe; 1.4.3 ile tutarlı. Burcu'nun taslağı: `docs/DEC 25.md` |
 | DEC-50 | SRS 1.4.4 Limitations | SRS Raporu | 1 | Todo | Yeni (26 Ekim, DEC-29'dan ayrıldı). 3–5 madde |
 | DEC-51 | SRS 1.4.5 Assumptions and dependencies | SRS Raporu | 1 | Todo | Yeni (26 Ekim, DEC-29'dan ayrıldı). 2–3 varsayım + 2–3 bağımlılık |
 | DEC-30 | SRS sunumu (11 slayt) | SRS Raporu | 3 | Todo | Son tarih 27 Ekim |
-| DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | Dataset | 4 | Todo | Taslak hazır. Mehmet tabloya "AOI seviyesi" sütunu istiyor (aşağıda) |
+| DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | Dataset | 4 | In Progress | Taslak hazır. Mehmet tabloya "AOI seviyesi" sütunu istiyor (aşağıda) |
 | DEC-46 | Veri az olursa: birleştirme kriterleri ve AI ile veri üretme | Dataset | 2 | Todo | |
 | DEC-28 | Yeni tarama: göz takibiyle deneyim sınıflandırma + Yeliz Hoca'nın makalesi ve atıfları | Literatür Taraması | 6 | Todo | Mehmet'in önerisi: Fang vd. 2026 |
 | DEC-27 | 6 proposal makalesini oku | Literatür Taraması | 6 | Paused | |
@@ -58,6 +58,8 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 
 - Bu klasör açıldı, tüm çalışmalar buraya toplandı.
 - Linear bağlandı; atanan işler, Mehmet'in DEC-33 yorumu ve DEC-40 eklendi.
+- DEC-29 (1.4.3) yazıldı ve rapora eklendi: Interviewer ve Candidate paragrafları. Linear'da Done, ⏱ 2h.
+- DEC-47 (2.3) taslağı: Burcu'nun 3 metriği düzeltildi (snippet seçme, SUS 75 = B). Şablon ve eleken metrikleriyle uyumlu.
 
 ## Açık işler
 
