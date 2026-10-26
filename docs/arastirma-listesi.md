@@ -68,6 +68,8 @@ Hocalar STA'nın yazarları (Eraslan, Yesilada). Bu yüzden STA'yı ve [6]'yı i
 
 ## 4. Webcam ile Bakış Tahmini (Kilometre taşı 5)
 
+Bulgular: [arastirma/webcam-goz-takibi.md](arastirma/webcam-goz-takibi.md)
+
 - [ ] Webcam tabanlı gaze tahmini: WebGazer.js, GazeCapture/iTracker, L2CS-Net, MediaPipe Face Mesh/Iris
 - [ ] Gerçekçi doğruluk: webcam ile kaç derece/piksel hata? Satır seviyesinde yeterli mi?
 - [ ] Kalibrasyon: uzak katılımcıda nasıl yapılır?

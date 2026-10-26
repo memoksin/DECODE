@@ -1,8 +1,16 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam rectangle {
+  BackgroundColor white
+  BorderColor black
+}
 
-rectangle "Google Meet" <<system>> as V
-rectangle "DECODE" as D
+rectangle "«system»\nMiroTalk" as VC
+rectangle "<b>DECODE</b>" as D
+rectangle "«system»\nPublic Eye-Tracking\nDataset" as DS
 
-V -right- D
+VC -- D : candidate webcam recording
+D -- DS : labelled scanpaths
 @enduml
