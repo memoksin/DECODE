@@ -1,6 +1,6 @@
 ## Related Work: Public Eye-Tracking Datasets
 
-Draft for DEC-33. Working notes, sources and open checks: [dec-33-dataset-karsilastirma.md](../dec-33-dataset-karsilastirma.md).
+Draft for DEC-33. Working notes, sources and open checks: [dec-33-dataset-karsilastirma.md](../sude/dec-33-dataset-karsilastirma.md).
 
 Todo (when writing the Word report): merge the reference numbers below into the report's list. Aljehane et al. [12] is Proposal [1], Peitek et al. [3] is Proposal [2], Eraslan et al. [13] is Proposal [5].
 
