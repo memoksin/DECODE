@@ -23,7 +23,7 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 | DEC-29 | SRS 1.4.3 User characteristics | SRS Raporu | 1 | Done (⏱ 2h) | En fazla 3 kullanıcı tipi; programlama geçmişi, erişilebilirlik. 26 Ekim'de daraltıldı |
 | DEC-47 | SRS 2.3 Usability requirements | SRS Raporu | 1 | Done (⏱ 2h) | Yeni (26 Ekim, DEC-25'ten ayrıldı). En fazla 3 ölçülebilir metrik (effectiveness, efficiency, satisfaction), her birine 1 gerekçe; 1.4.3 ile tutarlı. Burcu'nun taslağı: `docs/DEC 25.md` |
 | DEC-50 | SRS 1.4.4 Limitations | SRS Raporu | 1 | Done (⏱ 1h) | Yeni (26 Ekim, DEC-29'dan ayrıldı). 3–5 madde |
-| DEC-51 | SRS 1.4.5 Assumptions and dependencies | SRS Raporu | 1 | In Progress | Yeni (26 Ekim, DEC-29'dan ayrıldı). 2–3 varsayım + 2–3 bağımlılık |
+| DEC-51 | SRS 1.4.5 Assumptions and dependencies | SRS Raporu | 1 | Done (⏱ 1.5h) | Yeni (26 Ekim, DEC-29'dan ayrıldı). 2–3 varsayım + 2–3 bağımlılık |
 | DEC-30 | SRS sunumu (11 slayt) | SRS Raporu | 3 | Todo | Son tarih 27 Ekim |
 | DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | Dataset | 4 | Done (⏱ 4h) | Taslak hazır. Mehmet tabloya "AOI seviyesi" sütunu istiyor (aşağıda) |
 | DEC-46 | Veri az olursa: birleştirme kriterleri ve AI ile veri üretme | Dataset | 2 | Todo | |
@@ -67,7 +67,7 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 
 - DEC-33: Mehmet'in istediği "AOI level" sütunu eklendi. Peitek'te blok AOI'leri hazır; EMIP ve McChesney'deki token/satır AOI'leri bloklara toplanabilir. Mehmet'e cevap yazıldı, Linear'da Done.
 - DEC-50 (1.4.4) rapora taslaktaki haliyle eklendi (5 madde), Linear'da Done.
-- DEC-51 (1.4.5) başladı.
+- DEC-51 (1.4.5) yazıldı: 3 varsayım + 3 bağımlılık. Linear'da Done, ⏱ 1.5h.
 
 ## Açık işler
 
@@ -75,8 +75,8 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 - [ ] Tablonun SRS'teki yerini netleştir; bölümü ve 13 kaynağı Burcu'ya ilet (DEC-36, DEC-34)
 - [ ] Busjahn / Al Madi OSF (t5je9) dosya listesini tarayıcıdan kontrol et
 - [ ] EMIP ham dosyası ve `emip_metadata.csv` indirilecek (OSF)
-- [ ] DEC-29: 1.4.3–1.4.5 taslağı (1.2 Scope'taki limitasyonlarla çakışmasın; kullanıcılar: Interviewer, Candidate)
+- [x] DEC-29, DEC-50, DEC-51: 1.4.3–1.4.5 yazıldı
 - [ ] DEC-30: SRS sunumu (27 Ekim)
 - [x] DEC-33: tabloya "AOI seviyesi" sütunu eklendi (Mehmet'in yorumu)
-- [ ] DEC-33 bitince süre yorumu: `⏱ Xh — not`
+- [x] DEC-33 süre yorumu yazıldı (⏱ 4h)
 - [ ] DEC-46: veri az olursa ne olur, AI ile veri üretimi
