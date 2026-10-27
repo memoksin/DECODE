@@ -2,13 +2,25 @@
 
 ## Tracking
 
-- Linear: linear.app/decode2026, team key DEC. Jira (decode2026.atlassian.net) is archive only, do not delete
-- DEC-9..46 keep Jira numbers; DEC-1..8 are canceled placeholders
+- Linear: linear.app/decode2026, team key DEC
+- DEC-1..8 are canceled placeholders
 - Epic = project, Sprint 1 = cycle 1
 - Estimate: 1 point = 1 hour
 - Role labels: teknik-lider (Mehmet), teknik-tasarim (İrem), literatur-veri (Sude), literatur-kalite (Burcu). Label every new task; shared tasks get none
 - Time spent: comment `⏱ Xh — note` on each finished issue (SRS 5.2 needs hours)
-- Supervisor (2026-10-25): team may write the report and make burndown charts itself. Story points: no clear answer; ask in person 2026-10-26. If accepted → story points only, no hours; if not → back to Jira with real hours and estimates. SRS uses hours
+- Sprint 1 hours = estimates (real time not measured). Real measurement starts Sprint 2
+
+## Time tracking
+
+- Timer = Linear status: `In Progress` counts; `Paused`, `In Review`, `Done`, `Canceled` stop it
+- One `In Progress` issue per person. Stop working → `Paused` (end of day too)
+- Every new issue needs an estimate in hours (1 point = 1 hour)
+- Hours: `python3 experiments/time/hours.py --cycle N` (needs `LINEAR_API_KEY` in `.env`, Read-only key; copy `.env.example`)
+- Counts 08:00–23:00 Istanbul, max 8 h/day per issue; results are approximate
+- On Done: comment `⏱ Xh — note` with hours from the script
+- Hook `.claude/hooks/linear-time-rules.sh` blocks estimate-less issue creation and reminds on In Progress/Done
+- Never commit `.env`
+- Supervisor wants hours in the sprint burndown (estimate + real time); SRS uses hours
 
 ## Knowledge base
 
@@ -24,7 +36,7 @@
 ## Diagrams
 
 - Use PlantUML syntax for all diagrams (context, use case, ERD, etc.)
-- No Mermaid
+- Use Figma for UI design.
 - Per-type rules: `.claude/skills/diagramming/SKILL.md` (ERD: Chen in draw.io, not PlantUML)
 - Keep diagrams simple: easy to follow at a glance, few elements, no clutter
 - Keep text short and concise: brief labels, no long sentences

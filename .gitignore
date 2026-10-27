@@ -19,3 +19,6 @@ experiments/**/rec/
 experiments/**/models/
 experiments/**/.venv/
 __pycache__/
+
+# Secrets
+.env
