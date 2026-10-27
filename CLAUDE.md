@@ -17,8 +17,13 @@
 - Every new issue needs an estimate in hours (1 point = 1 hour)
 - Hours: `python3 experiments/time/hours.py --cycle N` (needs `LINEAR_API_KEY` in `.env`, Read-only key; copy `.env.example`)
 - Counts 08:00–23:00 Istanbul, max 8 h/day per issue; results are approximate
-- On Done: comment `⏱ Xh — note` with hours from the script
+- Forgotten rules are handled by the script: timer stops at 23:00 of its start day; 2+ In Progress at once → time split; Done with no timer → estimate (source `estimate`)
+- Latest `⏱ Xh` comment overrides the timer (use it to fix wrong hours)
+- On Done: comment `⏱ Xh — note` with Actual from the script; script lists Done issues missing it
+- Self-check: `python3 experiments/time/hours.py --test`
 - Hook `.claude/hooks/linear-time-rules.sh` blocks estimate-less issue creation and reminds on In Progress/Done
+- Claude Code runs it via `.claude/settings.json`; OpenCode via `.claude/plugins/linear-time.ts` (`.opencode` → `.claude` symlink)
+- Agents remind the user every reply (In Progress / Paused / Done + ⏱); text in `.claude/hooks/time-reminder.md`, injected by both tools
 - Never commit `.env`
 - Supervisor wants hours in the sprint burndown (estimate + real time); SRS uses hours
 
