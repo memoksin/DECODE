@@ -28,7 +28,7 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 | DEC-33 | Public eye-tracking dataset listesi + karşılaştırma tablosu | Dataset | 4 | Done (⏱ 4h) | Taslak hazır. Mehmet tabloya "AOI seviyesi" sütunu istiyor (aşağıda) |
 | DEC-46 | Veri az olursa: birleştirme kriterleri ve AI ile veri üretme | Dataset | 2 | Todo | |
 | DEC-28 | Yeni tarama: göz takibiyle deneyim sınıflandırma + Yeliz Hoca'nın makalesi ve atıfları | Literatür Taraması | 6 | Todo | Mehmet'in önerisi: Fang vd. 2026 |
-| DEC-27 | 6 proposal makalesini oku | Literatür Taraması | 6 | Done | |
+| DEC-27 | 6 proposal makalesini oku | Literatür Taraması | 6 | Done (⏱ 6h) | |
 | DEC-40 | Kod parçasından bağımsız (code-agnostic) AOI ve trending path | Teknik Araştırma | — | Backlog | Sprint 1 dışı |
 
 **Mehmet'in DEC-33 yorumu (25 Ekim):** Dataset tablosuna **AOI seviyesi** sütunu (satır / blok / yok) eklenmeli. DEC-45 kararıyla adayın bakışı kod bloklarına eşlenecek; trending path aynı birimde olmalı. Satır seviyesindeki dataset'lerin bloklara toplanıp toplanamayacağı da not edilmeli. Açık soru DEC-40'ta.
@@ -68,7 +68,7 @@ Cycle 1: 23–27 Ekim. SRS teslimi 27 Ekim 22:55. Tahmin: 1 puan = 1 saat.
 - DEC-33: Mehmet'in istediği "AOI level" sütunu eklendi. Peitek'te blok AOI'leri hazır; EMIP ve McChesney'deki token/satır AOI'leri bloklara toplanabilir. Mehmet'e cevap yazıldı, Linear'da Done.
 - DEC-50 (1.4.4) rapora taslaktaki haliyle eklendi (5 madde), Linear'da Done.
 - DEC-51 (1.4.5) yazıldı: 3 varsayım + 3 bağımlılık. Linear'da Done, ⏱ 1.5h.
-- DEC-27 (6 proposal makalesi) okundu, Linear'da Done.
+- DEC-27 (6 proposal makalesi) okundu, Linear'da Done, ⏱ 6h.
 
 ## Açık işler
 
