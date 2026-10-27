@@ -3,9 +3,19 @@
     "linear@anthropic-plugin-directory": true
   },
   "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/time-reminder.md"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
-        "matcher": "mcp__plugin_linear_linear__save_issue",
+        "matcher": "mcp__.*linear.*__save_issue",
         "hooks": [
           {
             "type": "command",
