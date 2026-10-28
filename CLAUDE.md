@@ -24,6 +24,7 @@
 - Hook `.claude/hooks/linear-time-rules.sh` blocks estimate-less issue creation and reminds on In Progress/Done
 - Claude Code runs it via `.claude/settings.json`; OpenCode via `.claude/plugins/linear-time.ts` (`.opencode` → `.claude` symlink)
 - Agents remind the user every reply (In Progress / Paused / Done + ⏱); text in `.claude/hooks/time-reminder.md`, injected by both tools
+- Cloud session (claude.ai/code): enable the claude.ai Linear connector (repo plugins don't load there); for `hours.py` add env var `LINEAR_API_KEY` and network access Custom + defaults + `api.linear.app`
 - Never commit `.env`
 - Supervisor wants hours in the sprint burndown (estimate + real time); SRS uses hours
 
