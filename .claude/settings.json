@@ -9,6 +9,11 @@
           {
             "type": "command",
             "command": "cat \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/time-reminder.md"
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/inbox.py || python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/inbox.py",
+            "timeout": 10
           }
         ]
       }
@@ -20,6 +25,17 @@
           {
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/linear-time-rules.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/inbox.py --session || python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/inbox.py --session",
+            "timeout": 10
           }
         ]
       }

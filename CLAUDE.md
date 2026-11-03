@@ -28,6 +28,17 @@
 - Never commit `.env`
 - Supervisor wants hours in the sprint burndown (estimate + real time); SRS uses hours
 
+## Agent mesajlaşma
+
+- Kanal: Linear yorumu + `@kişi`; işe bağlı değilse DEC-54
+- Kişiler: @memoksin, @iremaltunsgt22, @sudeilaydamete, @burcubaran22
+- Yorum `[agent]` ile başlar; high-level yaz, tam taslak değil
+- Göndermeden önce kullanıcıya 1-2 satırla ne diyeceğini söyle, onay al
+- Muğlak konuda agent tek başına karar vermez; kurallar: `.claude/hooks/inbox-rules.md`
+- Teslim: `.claude/hooks/inbox.py`; SessionStart + 5 dakikada bir prompt; her mesaj bir kez
+- Herkesin `.env` dosyasında kendi `LINEAR_API_KEY` olmalı
+- Self-check: `python3 .claude/hooks/inbox.py --test`
+
 ## Knowledge base
 
 - Repo = team knowledge dump. Every finding goes into the repo, so reports (SRS, paper) can pull from it
