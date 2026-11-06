@@ -24,7 +24,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/linear-time-rules.sh"
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/linear-time-rules.py || python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/linear-time-rules.py",
+            "timeout": 10
           }
         ]
       }
@@ -36,6 +37,11 @@
             "type": "command",
             "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/inbox.py --session || python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/inbox.py --session",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/setup_check.py || python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/setup_check.py",
+            "timeout": 40
           }
         ]
       }
