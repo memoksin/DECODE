@@ -24,7 +24,10 @@
 - Latest `⏱ Xh` comment overrides the timer (use it to fix wrong hours)
 - On Done: comment `⏱ Xh — note` with Actual from the script; script lists Done issues missing it
 - Self-check: `python3 experiments/time/hours.py --test`
-- Hook `.claude/hooks/linear-time-rules.sh` blocks estimate-less issue creation, non-whole estimates and `30dk` without estimate 1; reminds on In Progress/Done
+- Hook `.claude/hooks/linear-time-rules.py` blocks estimate-less issue creation, non-whole estimates and `30dk` without estimate 1; reminds on In Progress/Done
+- The same hook shows every new issue with its estimate in a prompt; the user accepts or rejects it
+- `.claude/hooks/setup_check.py` runs at SessionStart: repo behind origin, changed system files, missing `LINEAR_API_KEY`, failed self-checks. Silent when all is fine
+- The team uses Windows: hooks and scripts stay Python stdlib only, no bash scripts, no `jq`. Needs Python + Git for Windows (hooks run in Git Bash)
 - Claude Code runs it via `.claude/settings.json`; OpenCode via `.claude/plugins/linear-time.ts` (`.opencode` → `.claude` symlink)
 - Agents remind the user every reply (In Progress / Paused / Done + ⏱); text in `.claude/hooks/time-reminder.md`, injected by both tools
 - Cloud session (claude.ai/code): enable the claude.ai Linear connector (repo plugins don't load there); for `hours.py` add env var `LINEAR_API_KEY` and network access Custom + defaults + `api.linear.app`

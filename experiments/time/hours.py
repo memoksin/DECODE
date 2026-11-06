@@ -17,9 +17,8 @@ import urllib.request
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
-TZ = ZoneInfo("Europe/Istanbul")
+TZ = timezone(timedelta(hours=3))  # Istanbul has no DST; zoneinfo needs tzdata on Windows
 ACTIVE = "In Progress"
 HALF_HOUR_LABEL = "30dk"
 DAY_START, DAY_END = 8, 23  # time outside this window is not counted
@@ -45,7 +44,7 @@ def load_env():
     path = ROOT / ".env"
     if not path.exists():
         return
-    for line in path.read_text().splitlines():
+    for line in path.read_text(encoding="utf-8").splitlines():
         key, sep, value = line.partition("=")
         if sep and not line.lstrip().startswith("#"):
             os.environ.setdefault(key.strip(), value.strip().strip("\"'"))
@@ -300,6 +299,7 @@ if __name__ == "__main__":
     ap.add_argument("--cycle", type=int, default=1)
     ap.add_argument("--test", action="store_true")
     args = ap.parse_args()
+    sys.stdout.reconfigure(encoding="utf-8")
     if args.test:
         test()
         sys.exit()
