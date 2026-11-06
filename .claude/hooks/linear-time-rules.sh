@@ -4,11 +4,16 @@ in=$(cat)
 id=$(jq -r '.tool_input.id // empty' <<<"$in")
 state=$(jq -r '.tool_input.state // "" | ascii_downcase' <<<"$in")
 estimate=$(jq -r '.tool_input.estimate // empty' <<<"$in")
+half=$(jq -r '((.tool_input.labels // []) + (.tool_input.addLabels // [])) | any(.[]; . == "30dk")' <<<"$in")
 
 emit() { jq -n --arg k "$1" --arg v "$2" '{hookSpecificOutput: ({hookEventName: "PreToolUse"} + (if $k == "deny" then {permissionDecision: "deny", permissionDecisionReason: $v} else {additionalContext: $v} end))}'; }
 
 if [ -z "$id" ] && [ -z "$estimate" ]; then
   emit deny "New Linear issues need an estimate in hours (1 point = 1 hour). Set estimate and retry."
+elif [ -n "$estimate" ] && ! [[ "$estimate" =~ ^[0-9]+$ ]]; then
+  emit deny "Linear estimates are whole numbers. For 30 minutes use estimate 1 and label 30dk."
+elif [ "$half" = "true" ] && [ -n "$estimate" ] && [ "$estimate" != "1" ]; then
+  emit deny "Label 30dk needs estimate 1."
 elif [ "$state" = "in progress" ]; then
   emit note "Timer starts now. Only one In Progress issue per person: move the assignee's other In Progress issues to Paused. The timer stops by itself at 23:00; next day set In Progress again."
 elif [ "$state" = "done" ]; then

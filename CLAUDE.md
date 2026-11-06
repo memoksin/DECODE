@@ -5,7 +5,7 @@
 - Linear: linear.app/decode2026, team key DEC
 - DEC-1..8 are canceled placeholders
 - Epic = project, Sprint 1 = cycle 1
-- Estimate: 1 point = 1 hour
+- Estimate: 1 point = 1 hour; label `30dk` = 30 minutes
 - Role labels: teknik-lider (Mehmet), teknik-tasarim (İrem), literatur-veri (Sude), literatur-kalite (Burcu). Label every new task; shared tasks get none
 - Time spent: comment `⏱ Xh — note` on each finished issue (SRS 5.2 needs hours)
 - Sprint 1 hours = estimates (real time not measured). Real measurement starts Sprint 2
@@ -15,13 +15,16 @@
 - Timer = Linear status: `In Progress` counts; `Paused`, `In Review`, `Done`, `Canceled` stop it
 - One `In Progress` issue per person. Stop working → `Paused` (end of day too)
 - Every new issue needs an estimate in hours (1 point = 1 hour)
+- Agent says the estimate before opening an issue; user accepts or changes it, then the agent opens it
+- 30-minute work: estimate 1 + label `30dk`; `hours.py` counts the plan as 0.5 h (Linear takes whole numbers only)
+- Real time is never multiplied or changed to fit a plan
 - Hours: `python3 experiments/time/hours.py --cycle N` (needs `LINEAR_API_KEY` in `.env`, Read-only key; copy `.env.example`)
 - Counts 08:00–23:00 Istanbul, max 8 h/day per issue; results are approximate
 - Forgotten rules are handled by the script: timer stops at 23:00 of its start day; 2+ In Progress at once → time split; Done with no timer → estimate (source `estimate`)
 - Latest `⏱ Xh` comment overrides the timer (use it to fix wrong hours)
 - On Done: comment `⏱ Xh — note` with Actual from the script; script lists Done issues missing it
 - Self-check: `python3 experiments/time/hours.py --test`
-- Hook `.claude/hooks/linear-time-rules.sh` blocks estimate-less issue creation and reminds on In Progress/Done
+- Hook `.claude/hooks/linear-time-rules.sh` blocks estimate-less issue creation, non-whole estimates and `30dk` without estimate 1; reminds on In Progress/Done
 - Claude Code runs it via `.claude/settings.json`; OpenCode via `.claude/plugins/linear-time.ts` (`.opencode` → `.claude` symlink)
 - Agents remind the user every reply (In Progress / Paused / Done + ⏱); text in `.claude/hooks/time-reminder.md`, injected by both tools
 - Cloud session (claude.ai/code): enable the claude.ai Linear connector (repo plugins don't load there); for `hours.py` add env var `LINEAR_API_KEY` and network access Custom + defaults + `api.linear.app`

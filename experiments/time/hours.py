@@ -5,6 +5,7 @@ Works even when people forget the rules:
 - two issues In Progress at once: that time is split between them
 - a "⏱ Xh" comment on the issue overrides the timer (manual fix)
 - Done but never In Progress and no comment: estimate is used, marked "estimate"
+- label 30dk: the plan is 0.5 h (Linear estimates are whole numbers, so the estimate stays 1)
 Run: python3 experiments/time/hours.py [--cycle N]   (needs LINEAR_API_KEY in .env)
 Self-check: python3 experiments/time/hours.py --test"""
 import argparse
@@ -20,6 +21,7 @@ from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo("Europe/Istanbul")
 ACTIVE = "In Progress"
+HALF_HOUR_LABEL = "30dk"
 DAY_START, DAY_END = 8, 23  # time outside this window is not counted
 DAY_CAP = timedelta(hours=8)  # max counted per issue per day
 LOG_RE = re.compile(r"⏱\s*(\d+(?:[.,]\d+)?)\s*h")
@@ -30,6 +32,7 @@ query($cycle: Float!, $after: String) {
   issues(first: 25, after: $after, filter: {cycle: {number: {eq: $cycle}}}) {
     nodes {
       identifier title estimate createdAt assignee { name } state { name type }
+      labels { nodes { name } }
       history(first: 100) { nodes { createdAt fromState { name } toState { name } } }
       comments(first: 50) { nodes { body createdAt } }
     }
@@ -148,6 +151,14 @@ def logged(issue):
     return logs[-1][1] if logs else None
 
 
+def planned(issue):
+    """Planned hours, None if the issue has no estimate."""
+    labels = [l["name"] for l in (issue.get("labels") or {}).get("nodes", [])]
+    if HALF_HOUR_LABEL in labels:
+        return 0.5
+    return None if issue["estimate"] is None else float(issue["estimate"])
+
+
 def resolve(issue, timer):
     """(hours, source) with fallbacks: comment > timer > estimate (Done only)."""
     log = logged(issue)
@@ -155,8 +166,9 @@ def resolve(issue, timer):
         return log, "comment"
     if timer > 0:
         return timer, "timer"
-    if issue["state"]["type"] == "completed" and issue["estimate"] is not None:
-        return float(issue["estimate"]), "estimate"
+    plan = planned(issue)
+    if issue["state"]["type"] == "completed" and plan is not None:
+        return plan, "estimate"
     return 0.0, "-"
 
 
@@ -200,14 +212,16 @@ def report(issues, now):
     print("|---|---|---|---|---|---|---|---|")
     for issue, timer, hours, source in rows:
         owner = (issue["assignee"] or {}).get("name", "-")
-        est = issue["estimate"]
+        est = planned(issue)
         print(f"| {issue['identifier']} | {issue['title'][:50]} | {owner} | {issue['state']['name']} | "
-              f"{'-' if est is None else int(est)} | {timer:.1f} | {hours:.1f} | {source} |")
-    total_est = sum(i["estimate"] or 0 for i, *_ in rows)
-    print(f"\nTotal: estimate {int(total_est)} h, actual {sum(r[2] for r in rows):.1f} h")
+              f"{'-' if est is None else f'{est:g}'} | {timer:.1f} | {hours:.1f} | {source} |")
+    total_est = sum(planned(i) or 0 for i, *_ in rows)
+    print(f"\nTotal: estimate {total_est:g} h, actual {sum(r[2] for r in rows):.1f} h")
     missing = [i["identifier"] for i, *_ in rows if i["estimate"] is None]
+    bad_half = [i["identifier"] for i, *_ in rows if planned(i) == 0.5 and i["estimate"] != 1]
     notes = [
         ("No estimate", missing),
+        (f"Label {HALF_HOUR_LABEL} needs estimate 1", bad_half),
         ("Timer still running (counted until now, max 23:00)", flags["running"]),
         ("Left In Progress overnight (cut at 23:00, check real hours)", flags["overnight"]),
         ("Two+ In Progress at once (time split)", flags["shared"]),
@@ -223,10 +237,11 @@ def test():
     utc = timezone.utc
     now = datetime(2026, 10, 30, 12, tzinfo=utc)
 
-    def issue(iid, *ev, owner="A", state=("Todo", "unstarted"), est=2, created="2026-10-25T00:00:00Z", logs=()):
+    def issue(iid, *ev, owner="A", state=("Todo", "unstarted"), est=2, created="2026-10-25T00:00:00Z", logs=(), labels=()):
         return {
             "identifier": iid, "title": "t", "estimate": est, "createdAt": created,
             "assignee": {"name": owner}, "state": {"name": state[0], "type": state[1]},
+            "labels": {"nodes": [{"name": n} for n in labels]},
             "history": {"nodes": [{"createdAt": t, "fromState": {"name": f} if f else None,
                                    "toState": {"name": s} if s else None} for t, f, s in ev]},
             "comments": {"nodes": [{"body": b, "createdAt": t} for t, b in logs]},
@@ -266,6 +281,13 @@ def test():
     assert hours(i)["DEC-1"] == (3.0, "estimate")
     i["state"] = {"name": "Todo", "type": "unstarted"}
     assert hours(i)["DEC-1"] == (0.0, "-")
+    # label 30dk: plan is 0.5 h, also as the Done fallback; other labels change nothing
+    i = issue("DEC-1", ("2026-10-26T06:00:00Z", "Todo", "Done"), state=("Done", "completed"), est=1, labels=["30dk"])
+    assert planned(i) == 0.5 and hours(i)["DEC-1"] == (0.5, "estimate")
+    assert planned(issue("DEC-1", est=1, labels=["teknik-lider"])) == 1
+    # the label never touches measured time
+    i = issue("DEC-1", ("2026-10-26T06:00:00Z", "Todo", ACTIVE), ("2026-10-26T08:00:00Z", ACTIVE, "Paused"), est=1, labels=["30dk"])
+    assert abs(hours(i)["DEC-1"][0] - 2) < 1e-6
     # still running today, started 13:00 Istanbul, now 15:00
     i = issue("DEC-1", ("2026-10-30T10:00:00Z", "Todo", ACTIVE))
     rows, flags = compute([i], now)
