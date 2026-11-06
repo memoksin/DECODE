@@ -11,6 +11,7 @@ Her toplantı ayrı dosya. Geçersiz kararlar silinmez, ⚠ ile işaretlenir.
 | [20 Ekim](2026-10-20-ekip-ici.md) | Ekip içi | ~~Hedef Meet~~ ⚠, kalibrasyon linki, SRS Word, paper LaTeX |
 | [21 Ekim](2026-10-21-toplanti-2.md) | Hocalarla | Analiz gerçek zamanlı değil, use case düzeltmeleri, açık kaynak video platformu |
 | [21 Ekim akşamı](2026-10-21-aksam-ekip-ici.md) | Ekip içi | Rol dağılımı |
+| [4 Kasım](2026-11-04-toplanti-3.md) | Hocalarla | Sunuma scope ile başla, 3 bacak, tablo 3'e bölünür, Peitek ile başla |
 
 ## Geçersiz kararlar
 
