@@ -1,8 +1,10 @@
 # DECODE – SRS Presentation Speech (simple English)
 
-## Slide 1 · Problem, aim, scope — Sude
+## Cover — Sude
 
-Good morning. We are the DECODE team: Burcu, İrem, Mehmet and me, Sude.
+Good morning. We are the DECODE team: Burcu, İrem, Mehmet and me, Sude. DECODE means Developer Experience Classification via Eye-tracking Data Evaluation. Our supervisor is Yeliz Yeşilada, and our co-supervisor is Şükrü Eraslan. Today we will show you the main parts of our SRS.
+
+## Slide 1 · Problem, aim, scope — Sude
 
 In a remote interview, the interviewer sees the candidate’s answer. But they cannot see how the candidate reads the code. Studies show that novices and experienced programmers read the same code in a different order.
 
