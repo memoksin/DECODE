@@ -62,7 +62,8 @@
 
 ## Diagrams
 
-- Use PlantUML syntax for diagrams (context, use case, etc.); ERD is the exception: Chen in draw.io
+- Use PlantUML syntax for all diagrams (context, use case, etc.)
+- ERD must be Chen notation in draw.io, not PlantUML
 - Use Figma for UI design
 - Per-type rules: `.claude/skills/diagramming/SKILL.md`
 - Keep diagrams simple: easy to follow at a glance, few elements, no clutter
