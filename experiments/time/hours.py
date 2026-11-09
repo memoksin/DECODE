@@ -15,10 +15,41 @@ import re
 import sys
 import urllib.request
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, tzinfo
 from pathlib import Path
 
-TZ = timezone(timedelta(hours=3))  # Istanbul has no DST; zoneinfo needs tzdata on Windows
+
+
+def _last_sunday(year, month):
+    d = datetime(year, month, 31)
+    return d - timedelta(days=(d.weekday() + 1) % 7)
+
+
+class Bucharest(tzinfo):
+    """Europe/Bucharest (Cyprus uses it too): UTC+2, UTC+3 from last Sun of March to last Sun of Oct, 01:00 UTC.
+    Own class because zoneinfo needs tzdata on Windows. Transition hours (03:00-04:00) are outside the counted window."""
+
+    def _dst_utc(self, year):
+        return (_last_sunday(year, 3) + timedelta(hours=1), _last_sunday(year, 10) + timedelta(hours=1))
+
+    def fromutc(self, dt):
+        n = dt.replace(tzinfo=None)
+        start, end = self._dst_utc(n.year)
+        return (n + timedelta(hours=3 if start <= n < end else 2)).replace(tzinfo=self)
+
+    def utcoffset(self, dt):
+        n = dt.replace(tzinfo=None)
+        start, end = self._dst_utc(n.year)
+        return timedelta(hours=3 if start + timedelta(hours=2) <= n < end + timedelta(hours=3) else 2)
+
+    def dst(self, dt):
+        return self.utcoffset(dt) - timedelta(hours=2)
+
+    def tzname(self, dt):
+        return "EEST" if self.dst(dt) else "EET"
+
+
+TZ = Bucharest()
 ACTIVE = "In Progress"
 HALF_HOUR_LABEL = "30dk"
 DAY_START, DAY_END = 8, 23  # time outside this window is not counted
@@ -249,11 +280,11 @@ def test():
     def hours(*issues):
         return {i["identifier"]: (h, src) for i, _, h, src in compute(list(issues), now)[0]}
 
-    # 09:00-11:00 Istanbul (UTC+3) = 2 h
+    # 08:00-10:00 Bucharest (UTC+2 in late Oct) = 2 h
     i = issue("DEC-1", ("2026-10-26T06:00:00Z", "Todo", ACTIVE), ("2026-10-26T08:00:00Z", ACTIVE, "Paused"))
     assert abs(hours(i)["DEC-1"][0] - 2) < 1e-6
     # forgot Paused overnight: only 22:00-23:00 counts, next morning does not
-    i = issue("DEC-1", ("2026-10-26T19:00:00Z", "Todo", ACTIVE), ("2026-10-27T09:00:00Z", ACTIVE, "Done"))
+    i = issue("DEC-1", ("2026-10-26T20:00:00Z", "Todo", ACTIVE), ("2026-10-27T09:00:00Z", ACTIVE, "Done"))
     rows, flags = compute([i], now)
     assert abs(rows[0][1] - 1) < 1e-6 and flags["overnight"] == ["DEC-1"]
     # long day capped at 8 h
@@ -287,10 +318,15 @@ def test():
     # the label never touches measured time
     i = issue("DEC-1", ("2026-10-26T06:00:00Z", "Todo", ACTIVE), ("2026-10-26T08:00:00Z", ACTIVE, "Paused"), est=1, labels=["30dk"])
     assert abs(hours(i)["DEC-1"][0] - 2) < 1e-6
-    # still running today, started 13:00 Istanbul, now 15:00
+    # still running today, started 12:00 Bucharest, now 14:00
     i = issue("DEC-1", ("2026-10-30T10:00:00Z", "Todo", ACTIVE))
     rows, flags = compute([i], now)
     assert abs(rows[0][1] - 2) < 1e-6 and flags["running"] == ["DEC-1"]
+    # DST: 24 Oct is still UTC+3, so 19:00Z = 22:00 local and the 23:00 cut gives 1 h; 26 Oct is UTC+2
+    assert (TZ.utcoffset(datetime(2026, 10, 24, 12)), TZ.utcoffset(datetime(2026, 10, 26, 12))) == (timedelta(hours=3), timedelta(hours=2))
+    assert datetime(2026, 7, 1, 6, tzinfo=utc).astimezone(TZ).hour == 9 and datetime(2026, 12, 1, 6, tzinfo=utc).astimezone(TZ).hour == 8
+    i = issue("DEC-1", ("2026-10-24T19:00:00Z", "Todo", ACTIVE), ("2026-10-24T21:00:00Z", ACTIVE, "Paused"))
+    assert abs(hours(i)["DEC-1"][0] - 1) < 1e-6
     print("ok")
 
 
