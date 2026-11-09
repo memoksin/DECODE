@@ -17,7 +17,7 @@
 - Every new issue needs an estimate in hours (1 point = 1 hour)
 - Agent says the estimate before opening an issue; user accepts or changes it, then the agent opens it
 - 30-minute work: estimate 1 + label `30dk`; `hours.py` counts the plan as 0.5 h (Linear takes whole numbers only)
-- Real time is never multiplied or changed to fit a plan
+- Real time is not multiplied or changed to fit a plan; small fixes only as in "Sprint backlog and estimates"
 - Hours: `python3 experiments/time/hours.py --cycle N` (needs `LINEAR_API_KEY` in `.env`, Read-only key; copy `.env.example`)
 - Counts 08:00–23:00 Istanbul, max 8 h/day per issue; results are approximate
 - Forgotten rules are handled by the script: timer stops at 23:00 of its start day; 2+ In Progress at once → time split; Done with no timer → estimate (source `estimate`)
@@ -63,3 +63,24 @@
 - Per-type rules: `.claude/skills/diagramming/SKILL.md` (ERD: Chen in draw.io, not PlantUML)
 - Keep diagrams simple: easy to follow at a glance, few elements, no clutter
 - Keep text short and concise: brief labels, no long sentences
+
+## Reports and presentations
+
+- Supervisor feedback (SRS presentation, 9 Nov 2026); applies to every report, slide, and answer
+- Audience: 7 supervisors at the end-of-term presentation
+- Define target audience and actors first, at the very start
+- Be specific everywhere: concrete numbers, names, versions; no vague wording
+- Hardware: name the exact device/model/spec. Say if a result is machine- or system-dependent, and whether it should be
+- Slides: no sentences. Short labels, big fonts, readable visuals
+- Animations welcome: they help supervisors picture a mechanism
+- Spoken answers: max 10 seconds, short structure (e.g. "two reasons: …")
+- Related work goes into References
+
+## Sprint backlog and estimates
+
+- Wanted: general estimation, not a perfect day-by-day trace
+- Estimates and real hours may both be adjusted a little (supervisor allowed it)
+- Task done far under estimate (2 h plan, 15 min real) → estimate was wrong, cut it
+- Timer forgotten (2 h plan, 6 h shown) → real hours may be cut a little
+- Mid-sprint additions are written as if planned from the start; trim other items to fit
+- Note every adjustment in the `⏱` comment
