@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dec-39-pilot",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8039", "--directory", "experiments/dec-39"],
+      "port": 8039
+    }
+  ]
+}

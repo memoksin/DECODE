@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEC-39 Gaze Pilot</title>
+<style>
+  :root { --bg: #fff; --fg: #111; --muted: #666; --accent: #d00; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+    font: 15px/1.5 system-ui, sans-serif; }
+  #setup { max-width: 640px; margin: 24px auto; padding: 0 16px; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  label { display: block; margin: 10px 0 2px; font-weight: 600; }
+  input, select { font: inherit; padding: 6px 8px; width: 100%; }
+  .row { display: flex; gap: 12px; }
+  .row > div { flex: 1; }
+  button { font: inherit; padding: 10px 18px; margin-top: 16px; cursor: pointer; }
+  #preview { width: 100%; max-width: 480px; background: #000; margin-top: 12px; display: block;
+    transform: scaleX(-1); }
+  #camInfo, #msg { color: var(--muted); margin-top: 6px; white-space: pre-line; }
+  #stage { position: fixed; inset: 0; background: var(--bg); display: none; cursor: none; }
+  #dot { position: absolute; width: 20px; height: 20px; margin: -10px 0 0 -10px;
+    border-radius: 50%; background: #000; display: none; }
+  #dot::after { content: ""; position: absolute; left: 8px; top: 8px; width: 4px; height: 4px;
+    border-radius: 50%; background: var(--accent); }
+  #count { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    font-size: 64px; font-weight: 700; display: none; }
+</style>
+</head>
+<body>
+<div id="setup">
+  <h1>DEC-39 gaze pilot kaydı</h1>
+  <p>Ekranda sırayla noktalar çıkacak. Her noktanın ortasındaki kırmızıya bak, başını sabit tut.
+     Yaklaşık 80 sn sürer. Çıkmak için <b>Esc</b>.</p>
+  <div class="row">
+    <div><label for="who">Kayıt yapan</label><input id="who" placeholder="ör. İrem"></div>
+    <div><label for="dist">Göz–ekran mesafesi (cm)</label><input id="dist" type="number" min="20" max="150" placeholder="60"></div>
+  </div>
+  <div class="row">
+    <div><label for="glasses">Gözlük</label>
+      <select id="glasses"><option value="">seç</option><option>yok</option><option>gözlük</option><option>lens</option></select></div>
+    <div><label for="light">Işık</label>
+      <select id="light"><option value="">seç</option><option>normal oda ışığı</option><option>loş</option><option>gün ışığı</option></select></div>
+  </div>
+  <label for="note">Not (kamera konumu, ekran ölçeği vb.)</label><input id="note">
+  <button id="camBtn">1. Kamerayı aç</button>
+  <video id="preview" autoplay muted playsinline></video>
+  <div id="camInfo"></div>
+  <button id="startBtn" disabled>2. Kaydı başlat (tam ekran)</button>
+  <div id="msg"></div>
+</div>
+<div id="stage"><div id="dot"></div><div id="count"></div></div>
+
+<script>
+"use strict";
+const DOT_MS = 2000, DISCARD_MS = 500, COUNTDOWN = 3, SEED = 39, ROUNDS = 2;
+const CALIB = [];
+for (const y of [0.1, 0.5, 0.9]) for (const x of [0.1, 0.5, 0.9]) CALIB.push([x, y]);
+const EVAL = [[0.3, 0.3], [0.7, 0.3], [0.3, 0.7], [0.7, 0.7],
+              [0.5, 0.25], [0.5, 0.75], [0.25, 0.5], [0.75, 0.5]];
+
+const $ = id => document.getElementById(id);
+let stream = null, track = null, recorder = null, chunks = [], t0 = 0, frames = [], running = false, aborted = null;
+
+function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function shuffled(arr, seed) { const r = mulberry32(seed), a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const now = () => performance.now() - t0;
+
+function schedule() {
+  const s = [];
+  for (let r = 1; r <= ROUNDS; r++) {
+    CALIB.forEach((p, i) => s.push({ round: r, set: "calib", idx: i, fx: p[0], fy: p[1] }));
+    shuffled(EVAL.map((p, i) => ({ p, i })), SEED + r)
+      .forEach(({ p, i }) => s.push({ round: r, set: "eval", idx: i, fx: p[0], fy: p[1] }));
+  }
+  return s;
+}
+
+$("camBtn").onclick = async () => {
+  try {
+    if (stream) stream.getTracks().forEach(t => t.stop());
+    stream = await navigator.mediaDevices.getUserMedia({ audio: false,
+      video: { width: { ideal: 1920 }, height: { ideal: 1080 }, frameRate: { ideal: 30 } } });
+    track = stream.getVideoTracks()[0];
+    $("preview").srcObject = stream;
+    const s = track.getSettings();
+    $("camInfo").textContent = `Kamera: ${track.label}\nVerilen: ${s.width}×${s.height} @ ${s.frameRate} fps` +
+      `\nYüzün önizlemenin ortasında ve tam görünür olsun.`;
+    $("startBtn").disabled = false;
+  } catch (e) { $("camInfo").textContent = "Kamera açılamadı: " + e.name + " — " + e.message; }
+};
+
+function pickMime() {
+  for (const m of ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"])
+    if (MediaRecorder.isTypeSupported(m)) return m;
+  return "";
+}
+
+function countFrames(video) {
+  if (!("requestVideoFrameCallback" in HTMLVideoElement.prototype)) return;
+  const cb = (_, md) => { if (!running) return; frames.push(+now().toFixed(1)); video.requestVideoFrameCallback(cb); };
+  video.requestVideoFrameCallback(cb);
+}
+
+function showDot(fx, fy) { const d = $("dot");
+  d.style.left = (fx * innerWidth) + "px"; d.style.top = (fy * innerHeight) + "px"; d.style.display = "block"; }
+
+async function run() {
+  const meta = {
+    issue: "DEC-39", version: 1, created: new Date().toISOString(),
+    who: $("who").value, distance_cm: +$("dist").value || null,
+    glasses: $("glasses").value, light: $("light").value, note: $("note").value,
+    params: { DOT_MS, DISCARD_MS, COUNTDOWN, SEED, ROUNDS },
+  };
+  const missing = ["who", "dist", "glasses", "light"].filter(k => !$(k).value);
+  if (missing.length && !confirm("Boş alanlar var: " + missing.join(", ") + ". Yine de başlansın mı?")) return;
+
+  $("startBtn").disabled = true;
+  await document.documentElement.requestFullscreen().catch(() => {});
+  await sleep(600);  // wait for fullscreen layout
+  $("setup").style.display = "none"; $("stage").style.display = "block";
+
+  const mime = pickMime();
+  chunks = []; frames = []; aborted = null;
+  recorder = new MediaRecorder(stream, { mimeType: mime || undefined, videoBitsPerSecond: 8_000_000 });
+  recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+  const started = new Promise(r => recorder.onstart = r);
+  recorder.start(1000);
+  await started;
+  t0 = performance.now();
+  const wallStart = new Date().toISOString();
+  running = true;
+  countFrames($("preview"));
+
+  const events = [];
+  const c = $("count"); c.style.display = "block";
+  for (let i = COUNTDOWN; i > 0 && !aborted; i--) { c.textContent = i; await sleep(1000); }
+  c.style.display = "none";
+
+  for (const p of schedule()) {
+    if (aborted) break;
+    showDot(p.fx, p.fy);
+    const on = now();
+    await sleep(DOT_MS);
+    const off = now();
+    events.push({ ...p, x_css: +(p.fx * innerWidth).toFixed(1), y_css: +(p.fy * innerHeight).toFixed(1),
+      onset_ms: +on.toFixed(1), offset_ms: +off.toFixed(1),
+      use_from_ms: +(on + DISCARD_MS).toFixed(1) });
+  }
+  $("dot").style.display = "none";
+  running = false;
+  const end_ms = now();
+  const stopped = new Promise(r => recorder.onstop = r);
+  recorder.stop();
+  await stopped;
+  if (document.fullscreenElement) await document.exitFullscreen().catch(() => {});
+
+  const s = track.getSettings();
+  const fps = frames.length > 1 ? (frames.length - 1) / ((frames.at(-1) - frames[0]) / 1000) : null;
+  Object.assign(meta, {
+    aborted, wall_start: wallStart, duration_ms: +end_ms.toFixed(1),
+    clock: "ms since MediaRecorder start event (video t=0, approx.)",
+    camera: { label: track.label, settings: s,
+      capabilities: track.getCapabilities ? track.getCapabilities() : null },
+    recording: { mime: recorder.mimeType, bits_per_second: 8_000_000,
+      preview_frames_seen: frames.length, preview_fps: fps && +fps.toFixed(2),
+      fps_note: "preview_fps counts frames shown in the page, not the file; take real fps from the webm (ffprobe)" },
+    screen: { width: screen.width, height: screen.height, avail_w: screen.availWidth, avail_h: screen.availHeight,
+      inner_w: innerWidth, inner_h: innerHeight, device_pixel_ratio: devicePixelRatio,
+      fullscreen_ok: innerWidth === screen.width && innerHeight === screen.height },
+    browser: { user_agent: navigator.userAgent,
+      brands: navigator.userAgentData ? navigator.userAgentData.brands : null,
+      platform: navigator.userAgentData ? navigator.userAgentData.platform : navigator.platform,
+      hardware_concurrency: navigator.hardwareConcurrency },
+    events, frame_times_ms: frames,
+  });
+
+  const stamp = wallStart.replace(/[:.]/g, "-").slice(0, 19);
+  save(new Blob(chunks, { type: recorder.mimeType || "video/webm" }), `pilot-${stamp}.webm`);
+  save(new Blob([JSON.stringify(meta, null, 2)], { type: "application/json" }), `pilot-${stamp}.json`);
+
+  $("stage").style.display = "none"; $("setup").style.display = "block"; $("startBtn").disabled = false;
+  $("msg").textContent = (aborted ? `Yarıda kesildi (${aborted}). ` : "Bitti. ") +
+    `İndirilen: pilot-${stamp}.webm + .json\n${events.length} nokta, ${s.width}×${s.height}, ölçülen ~${fps ? fps.toFixed(1) : "?"} fps` +
+    (meta.screen.fullscreen_ok ? "" : "\nUyarı: sayfa tam ekran değildi, nokta konumları JSON'daki inner_w/inner_h'ye göre.") +
+    `\nİki dosyayı experiments/dec-39/rec/ klasörüne taşı.`;
+}
+
+function save(blob, name) {
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+}
+
+$("startBtn").onclick = () => run().catch(e => { running = false; $("msg").textContent = "Hata: " + e.message; });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && running) aborted = "esc"; });
+document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement && running) aborted = "fullscreen-exit"; });
+</script>
+</body>
+</html>
