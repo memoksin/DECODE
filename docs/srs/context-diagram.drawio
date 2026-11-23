@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="context" name="Context Diagram">
+    <mxGraphModel dx="1000" dy="400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;fontSize=13;" value="«system»&lt;br&gt;MiroTalk" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="d" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;fontSize=14;fontStyle=1;" value="DECODE" vertex="1">
+          <mxGeometry height="60" width="140" x="380" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ds" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;fontSize=13;" value="«system»&lt;br&gt;Public Eye-Tracking&lt;br&gt;Dataset" vertex="1">
+          <mxGeometry height="60" width="160" x="720" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="vc" target="d" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=default;verticalAlign=bottom;" value="candidate webcam recording">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="d" target="ds" style="endArrow=none;html=1;rounded=0;fontSize=12;labelBackgroundColor=default;verticalAlign=bottom;" value="labelled scanpaths">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

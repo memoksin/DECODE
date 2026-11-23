@@ -1,4 +1,4 @@
-"""Builds the five SRS UI mockups as HTML and renders them to ../ui-*.png.
+"""Builds the four SRS UI mockups as HTML and renders them to ../ui-*.png.
 
 Run: python -I build.py   (needs Microsoft Edge or Chrome)
 """
@@ -51,23 +51,7 @@ def page(title, view, time, body):
     return HEAD.format(title=title) + topbar(view, time) + body + controls() + "</body></html>"
 
 
-UI1 = page("UI-1 Session Setup", "Interviewer view", "14:02", '<div class="main">' + video_stage("Candidate 1") + """
-<div class="panel">
-  <div class="ph"><span class="badge">DECODE</span><h1>New Session</h1></div>
-  <div><div class="label">Session name</div><div class="input">Junior developer 1. tur</div></div>
-  <div><div class="label">Programming language</div><div class="input">Java <span>▾</span></div></div>
-  <div><div class="label">Join link for candidates</div>
-    <div class="link"><div class="input">sfu.decode.app/join/7F3K</div><div class="small-btn">Copy</div></div></div>
-  <div class="hint">No names or personal data in the session name.</div>
-  <div class="sep"></div>
-  <div class="row">Candidates joined <b>2</b></div>
-  <div class="row">Candidate 1 <span class="ok dot">Camera on · 1080p</span></div>
-  <div class="row">Candidate 2 <span class="ok dot">Camera on · 720p</span></div>
-  <div class="spacer"></div>
-  <div class="actions"><div class="btn secondary">Cancel</div><div class="btn primary">Start Analysis</div></div>
-</div></div>""")
-
-UI2 = page("UI-2 Consent", "Candidate view", "14:03", '<div class="main">' + video_stage("Interviewer") + """
+UI1 = page("UI-1 Consent", "Candidate view", "14:03", '<div class="main">' + video_stage("Interviewer") + """
 <div class="panel">
   <div class="ph"><span class="badge">DECODE</span><h1>Eye Tracking Consent</h1></div>
   <p class="p">The interviewer wants to analyse where you look while you read the code on this page.</p>
@@ -83,7 +67,7 @@ UI2 = page("UI-2 Consent", "Candidate view", "14:03", '<div class="main">' + vid
 </div></div>""")
 
 pts = [(80, 130), (640, 130), (1200, 130), (80, 360), (1200, 360), (80, 590), (640, 590), (1200, 590)]
-UI3 = page("UI-3 Calibration", "Candidate view", "14:04", '<div class="main"><div class="calib">' + """
+UI2 = page("UI-2 Calibration", "Candidate view", "14:04", '<div class="main"><div class="calib">' + """
   <div class="title"><div class="t"><span class="badge">DECODE</span>Calibration</div><p>Look at the blue dot until it moves.</p></div>
 """ + "".join(f'<div class="pt" style="left:{x}px;top:{y}px"></div>' for x, y in pts) + """
   <div class="pt active" style="left:640px;top:360px"></div>
@@ -103,7 +87,7 @@ code = [
     "}",
 ]
 code_html = "\n".join(f'<span class="ln">{i}</span>{line}' for i, line in enumerate(code, 1))
-UI4 = page("UI-4 Live Session", "Interviewer view", "14:09", """<div class="main"><div class="stage"><div class="codeview">
+UI3 = page("UI-3 Live Session", "Interviewer view", "14:09", """<div class="main"><div class="stage"><div class="codeview">
   <div class="codebar">DECODE code view <span>·  Search.java  ·  shown to Candidate 1</span></div>
   <pre>""" + code_html + """</pre>
   <div class="aoi" style="top:56px;height:44px"><em>Block 1</em></div>
@@ -128,9 +112,9 @@ UI4 = page("UI-4 Live Session", "Interviewer view", "14:09", """<div class="main
   <div class="actions"><div class="btn secondary">Recalibrate</div><div class="btn primary">End Analysis</div></div>
 </div></div>""")
 
-UI5 = page("UI-5 Session Report", "Interviewer view", "14:52", '<div class="main">' + video_stage("Candidate 1") + """
+UI4 = page("UI-4 Classification Report", "Interviewer view", "14:52", '<div class="main">' + video_stage("Candidate 1") + """
 <div class="panel">
-  <div class="ph"><span class="badge">DECODE</span><h1>Session Report</h1></div>
+  <div class="ph"><span class="badge">DECODE</span><h1>Classification Report</h1></div>
   <div class="selector"><div><div class="name">Junior developer 1. tur</div><div class="sub">26.10.2026 · 14:05</div></div><span>▾</span></div>
   <div class="stats">
     <div class="stat"><div class="k">Duration</div><div class="v">42 min</div></div>
@@ -153,11 +137,10 @@ UI5 = page("UI-5 Session Report", "Interviewer view", "14:52", '<div class="main
 </div></div>""")
 
 SCREENS = {
-    "ui-1-session-setup": UI1,
-    "ui-2-consent": UI2,
-    "ui-3-calibration": UI3,
-    "ui-4-live-session": UI4,
-    "ui-5-report": UI5,
+    "ui-1-consent": UI1,
+    "ui-2-calibration": UI2,
+    "ui-3-live-session": UI3,
+    "ui-4-report": UI4,
 }
 
 
