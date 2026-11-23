@@ -8,6 +8,9 @@
 - Estimate: 1 point = 1 hour; label `30dk` = 30 minutes
 - Role labels: teknik-lider (Mehmet), teknik-tasarim (İrem), literatur-veri (Sude), literatur-kalite (Burcu). Label every new task; shared tasks get none
 - Hours (estimate + real) feed the sprint burndown and SRS 5.2
+- Burndown: drawn by the team in Excel from approximate numbers; it must only look like a real burndown
+- Supervisors (19 and 23 Nov 2026): "we do not expect a perfect chart; show that you worked"
+- Do not build exact day-by-day burndowns from `hours.py`; `docs/srs/burndown.py` was Sprint 1 only
 - Sprint 1 hours are estimates (real time was not measured)
 
 ## Time tracking
