@@ -8,7 +8,7 @@ Durum: çalışıyor (24 Kasım 2026, Mehmet + agent). Kayıt Mehmet'in kameras�
 - Kaydedilen görüntü kameranın kendisi, sekme/ekran kaydı değil (kare kontrol edildi, arayüz yok). DEC-44 varsayımı doğrulandı.
 - PR-01 (≥ 720p, 30 fps) bu donanımda sağlanıyor.
 - 720p, MiroTalk'un masaüstü varsayılanı (`getVideoConstraints`: `ideal` 1280×720, 30 fps). Ayarlardan Full HD seçilince kamera **1920×1080, 30,0 fps** kaydetti.
-- 1080p dosyanın bitrate'i 720p'den düşük çıktı (2,30 vs 2,63 Mbps): piksel başına daha çok sıkıştırma. Gaze için hangisinin daha iyi olduğu DEC-39'da ölçülmeli.
+- 1080p dosyanın bitrate'i 720p'den düşük çıktı (2,30 vs 2,63 Mbps): piksel başına daha çok sıkıştırma. Gaze için hangisinin daha iyi olduğu DEC-39'da ölçülmeli. Bitrate fork'ta ayarlanabilir; yalnızca gaze sonucu kötü çıkarsa ellenir (Mehmet, 24 Kasım).
 - Kaydı **host (interviewer) başlatır**: eklentide hazır kodlardan birini seçer, kod developer'ın önüne gelir ve kayıt başlar (Mehmet, 24 Kasım). Fork'ta gereken: host'un komutuyla kayıt **developer'ın tarayıcısında** başlamalı. Bu denemede tek kişiydik, kaydı başlatan ve kaydedilen aynı tarayıcıydı; iki kişilik akış denenmedi.
 - Sonraya: ses kapatılabilir; sunucuya yükleme (`/recSync`) denenmedi, dosya tarayıcıdan indirildi.
 
