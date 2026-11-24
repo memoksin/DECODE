@@ -1,0 +1,57 @@
+@startuml component-deployment
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam componentStyle uml2
+skinparam nodesep 50
+skinparam ranksep 60
+
+node "Developer's computer" <<device>> as DevPC {
+  node "Web browser" <<execution environment>> as DevBrowser {
+    component "Consent page" as Consent
+    component "Calibration page" as Calib
+    component "Code view" as CodeView
+    component "Webcam recorder" as Recorder
+  }
+}
+
+node "Interviewer's computer" <<device>> as IntPC {
+  node "Web browser" <<execution environment>> as IntBrowser {
+    component "Result page" as Result
+  }
+}
+
+node "DECODE server" <<device>> as Server {
+  node "Node.js" <<execution environment>> as Node {
+    interface "Upload" as IUpload
+    interface "Report" as IReport
+    component "MiroTalk SFU" as SFU
+    component "Session backend" as Backend
+  }
+  node "Python" <<execution environment>> as Py {
+    interface "Analysis job" as IJob
+    component "STA classifier" as STA
+    component "Fixation and AOI mapping" as AOI
+    component "Gaze estimation" as Gaze
+    artifact "Trending paths" as Paths
+  }
+}
+
+Consent -[hidden]right- Calib
+Calib -[hidden]right- CodeView
+CodeView -[hidden]right- Recorder
+
+DevBrowser -- SFU : WebRTC
+IntBrowser -- SFU : WebRTC
+
+Recorder ..> IUpload : HTTPS
+IUpload -- Backend
+Result ..> IReport : HTTPS
+IReport -- Backend
+
+Backend ..> IJob
+IJob -- Gaze
+Gaze -down-> AOI
+AOI -down-> STA
+STA .left.> Paths
+@enduml
