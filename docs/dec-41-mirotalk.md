@@ -8,7 +8,8 @@ Durum: çalışıyor (24 Kasım 2026, Mehmet + agent). Kayıt Mehmet'in kameras�
 - Kaydedilen görüntü kameranın kendisi, sekme/ekran kaydı değil (kare kontrol edildi, arayüz yok). DEC-44 varsayımı doğrulandı.
 - PR-01 (≥ 720p, 30 fps) bu donanımda sağlanıyor.
 - 720p, MiroTalk'un masaüstü varsayılanı (`getVideoConstraints`: `ideal` 1280×720, 30 fps). Kamera daha yüksek çözünürlük destekliyor olabilir; 1080p (`fhd`) ayarı denenmedi.
-- Fork'ta değişmesi gerekenler: kayıt developer tarafında otomatik başlamalı (şu an kaydı host başlatıyor, `host_only_recording: true`); kayıt butonu menüde gizli; sunucuya yükleme (`/recSync`) bu denemede kullanılmadı, dosya tarayıcıdan indirildi.
+- Kaydı **host (interviewer) başlatır**: eklentide hazır kodlardan birini seçer, kod developer'ın önüne gelir ve kayıt başlar (Mehmet, 24 Kasım). Fork'ta gereken: host'un komutuyla kayıt **developer'ın tarayıcısında** başlamalı. Bu denemede tek kişiydik, kaydı başlatan ve kaydedilen aynı tarayıcıydı; iki kişilik akış denenmedi.
+- Sonraya: ses kapatılabilir; sunucuya yükleme (`/recSync`) denenmedi, dosya tarayıcıdan indirildi.
 
 ## Yöntem
 
@@ -59,7 +60,7 @@ Donanım ve yazılım:
 - [ ] 1080p (`fhd`) ayarıyla tekrar kaydet; kamera gerçekten 1080p veriyor mu?
 - [ ] Bir Windows laptopta aynı deneme (DEC-62 ile birlikte).
 - [ ] Sunucuya yükleme (`/recSync`, `rec-upload` JWT) dene.
-- [ ] Fork: developer tarafında otomatik kayıt, sesi kapat, kalibrasyon ve kod sayfasını `public/` altına ekle (DEC-69, DEC-70).
+- [ ] Fork: host komutuyla developer tarafında kayıt, sesi kapat, kalibrasyon ve kod sayfasını `public/` altına ekle (DEC-69, DEC-70).
 
 ## SRS için cümle
 
