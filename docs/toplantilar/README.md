@@ -12,6 +12,7 @@ Her toplantı ayrı dosya. Geçersiz kararlar silinmez, ⚠ ile işaretlenir.
 | [21 Ekim](2026-10-21-toplanti-2.md) | Hocalarla | Analiz gerçek zamanlı değil, use case düzeltmeleri, açık kaynak video platformu |
 | [21 Ekim akşamı](2026-10-21-aksam-ekip-ici.md) | Ekip içi | Rol dağılımı |
 | [4 Kasım](2026-11-04-toplanti-3.md) | Hocalarla | Sunuma scope ile başla, 3 bacak, tablo 3'e bölünür, Peitek ile başla |
+| [9 Kasım](2026-11-09-srs-sunumu-geri-bildirim.md) | SRS sunumu | Problem net ve bilimsel, özgünlük vurgusu, dar scope, interviewer herkes olabilir |
 
 ## Geçersiz kararlar
 
