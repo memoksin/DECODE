@@ -7,7 +7,8 @@ Durum: çalışıyor (24 Kasım 2026, Mehmet + agent). Kayıt Mehmet'in kameras�
 - MiroTalk SFU yerelde ilk denemede çalıştı. Developer'ın kamerası **tarayıcıda** kaydedildi: **1280×720, 30,0 fps, VP9 + Opus, WebM**.
 - Kaydedilen görüntü kameranın kendisi, sekme/ekran kaydı değil (kare kontrol edildi, arayüz yok). DEC-44 varsayımı doğrulandı.
 - PR-01 (≥ 720p, 30 fps) bu donanımda sağlanıyor.
-- 720p, MiroTalk'un masaüstü varsayılanı (`getVideoConstraints`: `ideal` 1280×720, 30 fps). Kamera daha yüksek çözünürlük destekliyor olabilir; 1080p (`fhd`) ayarı denenmedi.
+- 720p, MiroTalk'un masaüstü varsayılanı (`getVideoConstraints`: `ideal` 1280×720, 30 fps). Ayarlardan Full HD seçilince kamera **1920×1080, 30,0 fps** kaydetti.
+- 1080p dosyanın bitrate'i 720p'den düşük çıktı (2,30 vs 2,63 Mbps): piksel başına daha çok sıkıştırma. Gaze için hangisinin daha iyi olduğu DEC-39'da ölçülmeli.
 - Kaydı **host (interviewer) başlatır**: eklentide hazır kodlardan birini seçer, kod developer'ın önüne gelir ve kayıt başlar (Mehmet, 24 Kasım). Fork'ta gereken: host'un komutuyla kayıt **developer'ın tarayıcısında** başlamalı. Bu denemede tek kişiydik, kaydı başlatan ve kaydedilen aynı tarayıcıydı; iki kişilik akış denenmedi.
 - Sonraya: ses kapatılabilir; sunucuya yükleme (`/recSync`) denenmedi, dosya tarayıcıdan indirildi.
 
@@ -29,12 +30,12 @@ Durum: çalışıyor (24 Kasım 2026, Mehmet + agent). Kayıt Mehmet'in kameras�
 
 | Özellik | Değer |
 |---|---|
-| Dosya | `Rec_2026-11-24-10_09_42.webm`, 10,6 MB |
-| Süre | 32,3 sn |
-| Video | VP9, 1280×720 |
-| Kare | 970 kare / 32,3 sn = **30,0 fps** |
-| Ses | Opus |
-| Ortalama bitrate | 2,63 Mbps |
+| Ayar | Dosya | Süre | Video | Kare | Bitrate |
+|---|---|---|---|---|---|
+| Varsayılan | `Rec_2026-11-24-10_09_42.webm`, 10,6 MB | 32,3 sn | VP9, 1280×720 | 970 / 32,3 sn = **30,0 fps** | 2,63 Mbps |
+| Full HD | `Rec_2026-11-24-10_13_21.webm`, 10,2 MB | 35,6 sn | VP9, 1920×1080 (tüm kareler) | 1069 / 35,6 sn = **30,0 fps** | 2,30 Mbps |
+
+İki dosyada da ses Opus. fps ayarına dokunulmadı.
 
 Donanım ve yazılım:
 
@@ -52,12 +53,12 @@ Donanım ve yazılım:
 - **Makineye bağlı:** çözünürlük ve fps kameraya ve tarayıcıya bağlı. Tek makine, tek kamera; Windows ve düşük kaliteli laptop kamerası denenmedi (DEC-45'te bir arkadaşın kaydı 16 fps'e düşmüştü). Bağımlı olması beklenen bir şey: gereksinim cihaz sınıfına göre (≥ 720p / 30 fps kamera) tanımlı.
 - Tek katılımcı, yerel ağ. Ağ gecikmesi (PR-02) ve iki kişilik görüşme denenmedi.
 - Kayıt tarayıcıdan indirildi; sunucuya parçalı yükleme (`/recSync`) denenmedi.
+- 1080p karede arka plan bulanık görünüyor: macOS kamera efektleri (Portre / Center Stage) açık olabilir. Center Stage yüzü takip edip görüntüyü kırptığı için gaze kalibrasyonunu bozabilir; developer'a kapattırılmalı. Bu denemede efekt ayarları not edilmedi.
 - Kayıt ses de içeriyor; analiz için gerekmiyor, gizlilik açısından fork'ta kapatılabilir.
 - WebM başlığında "unknown-sized element" uyarısı var (MediaRecorder çıktısı); ffprobe ve ffmpeg dosyayı sorunsuz okudu.
 
 ## Todo
 
-- [ ] 1080p (`fhd`) ayarıyla tekrar kaydet; kamera gerçekten 1080p veriyor mu?
 - [ ] Bir Windows laptopta aynı deneme (DEC-62 ile birlikte).
 - [ ] Sunucuya yükleme (`/recSync`, `rec-upload` JWT) dene.
 - [ ] Fork: host komutuyla developer tarafında kayıt, sesi kapat, kalibrasyon ve kod sayfasını `public/` altına ekle (DEC-69, DEC-70).
