@@ -44,12 +44,12 @@ CodeView -[hidden]right- Recorder
 DevBrowser -- SFU : WebRTC
 IntBrowser -- SFU : WebRTC
 
-Recorder ..> IUpload : HTTPS
+Recorder --( IUpload : HTTPS
 IUpload -- Backend
-Result ..> IReport : HTTPS
+Result --( IReport : HTTPS
 IReport -- Backend
 
-Backend ..> IJob
+Backend --( IJob
 IJob -- Gaze
 Gaze -down-> AOI
 AOI -down-> STA
