@@ -1,0 +1,5 @@
+input: synthetic_experienced.tsv
+individual paths: ['AEHEI', 'AEHI', 'ADEHI', 'AEHEHI']
+trending path: AEHEDI
+tolerance level: 0.50
+similarity to individual paths (%): median 75.00, mean 70.83, min 50.00, max 83.33

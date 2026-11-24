@@ -1,0 +1,5 @@
+input: synthetic_novice.tsv
+individual paths: ['ABCDEFGHI', 'ABCADEFGHI', 'ABDEFEGHI', 'ABCDEFGHGI']
+trending path: ABDEFGAHEGI
+tolerance level: 0.99
+similarity to individual paths (%): median 63.64, mean 63.64, min 54.55, max 72.73
