@@ -55,7 +55,7 @@ Kapasite: 4 × 28 hafta × 8,5 h = 952 h (6,3 PM).
 
 ## Sunum için 10 saniyelik cevap
 
-"İki senaryo: hazır kod sayılırsa 2.700 saat, sayılmazsa 2.100 saat. Kapasitemiz 950 saat; bu yüzden hazır kodu kullanıyoruz ve önce ana akışı yapıyoruz."
+Linear DEC-61 açıklamasında (rapora girmez).
 
 ## SRS için cümle
 
