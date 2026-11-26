@@ -1,113 +1,114 @@
 ## 3 Software Estimation
 
-Draft for DEC-19. All numbers come from [estimation.py](estimation.py) (`python3 docs/srs/estimation.py`). The design follows DEC-44: a MiroTalk SFU fork records the candidate's camera in the browser, and the analysis runs in Python.
-
-Todo (when writing the Word report): enter the same inputs into the COCOMO II web tool (http://softwarecost.org/tools/COCOMO/), add a screenshot of the result and cite it as the estimation tool.
+Draft for DEC-19 and DEC-61. All numbers come from [estimation.py](estimation.py) (`python3 docs/srs/estimation.py`). The FP count is in `experiments/dec-59/fp.py`. Only methods from CNG491 Lecture 3 are used.
 
 ### 3.1 Method
 
-1. Estimate the size (KSLOC) **by analogy**: for each module, we measured the code lines (`cloc`) of open-source code that does the same job.
-2. Count only code we write or change. Libraries we only call (MediaPipe, L2CS-Net, NumPy) count 0. MiroTalk code we adapt is converted to equivalent lines with the COCOMO II reuse model [2].
-3. Estimate effort and schedule with Basic COCOMO (organic) [1] and COCOMO II.2000 post-architecture [2].
-4. Compare the estimates with the team's capacity.
+1. Count the size in **Function Points** (IFPUG): unadjusted FP (UTFP), then adjusted FP (ATFP = UTFP × VAF).
+2. Convert FP to code size: LOC = ATFP × language unit size (LOC per FP).
+3. Estimate effort and schedule with **Basic COCOMO** (organic) [1] and **Jones First-Order** estimation [2].
+4. Cross-check with a second size method: **analogy** with measured open-source code.
+5. Compare all estimates with the team's capacity.
 
-### 3.2 Size
+Part of DECODE is ready code: MiroTalk SFU gives the video room, recording and upload; the original STA code builds the trending paths. We show two scenarios: the ready code counted and not counted.
 
-**New code**
+### 3.2 Function Points
+
+| Type | Items | UTFP |
+|---|---|---|
+| ILF | Interviewer, Session, Developer, Code stimulus + AOIs, Scanpath + result, Dataset, Trending path | 49 |
+| EIF | Public dataset files, MiroTalk room | 10 |
+| EI | Create/end session, Consent, Calibration, Upload + analyse, Import dataset, Build trending paths, Add code stimulus | 29 |
+| EO | Classification report, Live status, Calibration feedback, Camera check, Model evaluation | 25 |
+| EQ | Session list, Developers joined, Code view, Stimulus list | 12 |
+| **Total** | | **125** |
+
+- VAF = 0.65 + 0.01 × ΣGSC = 0.65 + 0.01 × 41 = **1.06**
+- Ready code counted: ATFP = 125 × 1.06 = **132.5**
+- Ready code not counted (MiroTalk room, upload + analyse, live status, camera check, dataset import, trending paths: 28 UTFP): ATFP = 97 × 1.06 = **102.8**
+
+### 3.3 Code size
+
+| Language | Share of code | LOC per FP | Source |
+|---|---|---|---|
+| JavaScript | 34% | 47 | QSM Function Point Languages Table [3] |
+| Python | 66% | 53.33 | Jones (2017), Table 16 [4]; the QSM table has no Python value |
+| **Weighted** | | **51.18** | |
+
+The language shares come from the analogy in 3.5 (823 JavaScript and 1,602 Python SLOC).
+
+| Scenario | ATFP | Size |
+|---|---|---|
+| Ready code counted | 132.5 | 6.78 KDSI |
+| Ready code not counted | 102.8 | 5.26 KDSI |
+
+### 3.4 Effort and schedule
+
+**Basic COCOMO, organic** [1]: MM = 2.4 × KDSI^1.05, TDEV = 2.5 × MM^0.38. The project is organic: a small team, a familiar environment and no hard constraints.
+
+**Jones First-Order** [2]: Effort = ATFP^(3 × exp) / 27 PM, Schedule = ATFP^exp months. We use the Business class exponents (best 0.41, average 0.43, worst 0.46).
+
+| Method | Ready code counted | Ready code not counted |
+|---|---|---|
+| Basic COCOMO | 17.9 PM, 2,722 h, 7.5 months | 13.7 PM, 2,086 h, 6.8 months |
+| Jones, best | 15.1 PM, 2,295 h, 7.4 months | 11.1 PM, 1,680 h, 6.7 months |
+| Jones, average | 20.2 PM, 3,077 h, 8.2 months | 14.6 PM, 2,219 h, 7.3 months |
+| Jones, worst | 31.4 PM, 4,777 h, 9.5 months | 22.1 PM, 3,366 h, 8.4 months |
+
+Hours use 152 h per person-month [1].
+
+### 3.5 Second method: analogy
+
+For each module we measured the code lines (`cloc`) of open-source code that does the same job.
 
 | Module | Language | SLOC | Measured analog |
 |---|---|---|---|
-| Calibration page | JavaScript | 261 | WebGazer calibration demo [3] |
-| Consent and result pages | JavaScript | 206 | WebGazer heatmap page (103) × 2 pages [3] |
-| Code view with code-block AOIs from the DOM | JavaScript | 150 | No analog found, team estimate |
-| Backend: upload → Python job → report | JavaScript | 206 | MiroTalk `Server.js` recording endpoints [7] |
-| Gaze pipeline | Python | 484 | Our DEC-45 gaze code (170) + WebGazer ridge regression to screen (314) [3] |
-| Fixations and AOI mapping | Python | 237 | EMIP-Toolkit AOI mapping and I-DT [4] |
-| STA and classification | Python | 366 | Original STA implementation with tolerance level [5] |
-| Dataset import | Python | 225 | EMIP-Toolkit dataset parsers [4] |
-| Model evaluation | Python | 290 | Eye-tracking classifier training and evaluation script [6] |
+| Calibration page | JavaScript | 261 | WebGazer calibration demo [5] |
+| Consent and result pages | JavaScript | 206 | WebGazer heatmap page (103) × 2 pages [5] |
+| Code view with code-block AOIs | JavaScript | 150 | No analog found, team estimate |
+| Backend: upload → Python job → report | JavaScript | 206 | MiroTalk `Server.js` recording endpoints [8] |
+| Gaze pipeline | Python | 484 | Our DEC-45 gaze code (170) + WebGazer ridge regression (314) [5] |
+| Fixations and AOI mapping | Python | 237 | EMIP-Toolkit AOI mapping and I-DT [6] |
+| STA and classification | Python | 366 | Original STA implementation with tolerance level [7] |
+| Dataset import | Python | 225 | EMIP-Toolkit dataset parsers [6] |
+| Model evaluation | Python | 290 | Eye-tracking classifier training script [9] |
 | **Total new** | | **2,425** | |
 
-**Adapted code (COCOMO II reuse model)**
+The MiroTalk recording and upload code we change is 826 SLOC (`RoomClient.js` RECORDING section and `Server.js` recording endpoints) [8].
 
-MiroTalk SFU already records and uploads video. We adapt this code: the client "RECORDING" section of `RoomClient.js` and the `/recSync` endpoints in `Server.js`, **826 SLOC** [7].
-
-| Parameter | Value | Reason |
+| Scenario | Size | Basic COCOMO |
 |---|---|---|
-| DM (design modified) | 20% | Recording moves to the candidate side and starts automatically |
-| CM (code modified) | 30% | Upload target and file naming change |
-| IM (integration) | 30% | Link to the Python pipeline |
-| AA (assessment) | 4 | Some module test and evaluation |
-| SU (understanding) | 40 | Low: `RoomClient.js` is a large single file |
-| UNFM (unfamiliarity) | 0.8 | Mostly unfamiliar to the team |
+| MiroTalk code counted | 3,251 SLOC | 8.3 PM, 1,258 h, 5.6 months |
+| MiroTalk code not counted | 2,425 SLOC | 6.1 PM, 925 h, 5.0 months |
 
-- AAF = 0.4 × 20 + 0.3 × 30 + 0.3 × 30 = 26
-- AAM = [AA + AAF × (1 + 0.02 × SU × UNFM)] / 100 = [4 + 26 × 1.64] / 100 = 0.466
-- Equivalent SLOC = 826 × 0.466 = **385 ESLOC**
+### 3.6 Comparison with team capacity
 
-**Total size = 2,425 + 385 = 2,810 SLOC ≈ 2.81 KSLOC**
+Capacity: 4 students × 28 weeks × 8.5 h/week = **952 h (6.3 PM)**. 8.5 h/week comes from the Sprint 1 plan: 102 h of estimated tasks for 4 people in 3 weeks.
 
-### 3.3 Basic COCOMO (organic)
+| Estimate | Hours | × capacity |
+|---|---|---|
+| FP + Basic COCOMO, ready code counted | 2,722 h | 2.9 |
+| FP + Basic COCOMO, ready code not counted | 2,086 h | 2.2 |
+| FP + Jones average, ready code counted | 3,077 h | 3.2 |
+| FP + Jones average, ready code not counted | 2,219 h | 2.3 |
+| Analogy, MiroTalk counted | 1,258 h | 1.3 |
+| Analogy, MiroTalk not counted | 925 h | 1.0 |
 
-The project is organic: a small team, a familiar environment, and no hard hardware or real-time constraints.
+- The FP estimates are 2–3 times the capacity. FP counts what the system does, so it also counts the functions that ready code already gives us.
+- The analogy counts only the code we write, so it is close to the capacity.
+- To stay within capacity, we build the core path first (F2–F6), reuse existing code (MiroTalk recording, EMIP-Toolkit parsers, the original STA code), and keep the research pipeline (F9, F10) as scripts.
+- We compare these estimates with the hours we log per issue at the end of each sprint.
 
-- Effort: E = 2.4 × 2.81^1.05 = **7.1 person-months (PM)**
-- Duration: D = 2.5 × 7.1^0.38 = **5.3 months**
-- Average staff: 7.1 / 5.3 = 1.3 full-time people
-
-### 3.4 COCOMO II.2000 (post-architecture)
-
-- Effort: PM = A × Size^E × ΠEM, with A = 2.94 and E = B + 0.01 × ΣSF, B = 0.91 [2]
-- Schedule: TDEV = C × PM^(D + 0.2 × (E − B)), with C = 3.67 and D = 0.28 [2]
-
-**Scale factors**
-
-| Factor | Rating | Value | Reason |
-|---|---|---|---|
-| PREC (precedentedness) | Low | 4.96 | First gaze or STA product for the team |
-| FLEX (development flexibility) | High | 2.03 | Supervisors set goals, not the process |
-| RESL (architecture/risk resolution) | Low | 5.65 | Gaze accuracy risk is still open |
-| TEAM (team cohesion) | High | 2.19 | Four classmates, weekly meetings |
-| PMAT (process maturity) | Low | 6.24 | Student team, light process |
-| **Sum** | | **21.07** | E = 0.91 + 0.2107 = **1.121** |
-
-**Effort multipliers** (all others Nominal, 1.00)
-
-| Driver | Rating | Value | Reason |
-|---|---|---|---|
-| RELY (required reliability) | Low | 0.92 | Research prototype, failure costs little |
-| CPLX (product complexity) | High | 1.17 | Computer vision and sequence analysis |
-| ACAP (analyst capability) | Low | 1.19 | Undergraduate analysts |
-| PCAP (programmer capability) | Low | 1.15 | Undergraduate programmers |
-| APEX (application experience) | Low | 1.10 | New domain for the team (about 6 months) |
-| TOOL (software tools) | High | 0.90 | Modern IDEs, git, Linear |
-| **Product (EAF)** | | **1.458** | |
-
-- Effort: PM = 2.94 × 2.81^1.121 × 1.458 = **13.6 PM**
-- Schedule: TDEV = 3.67 × 13.6^(0.28 + 0.2 × 0.211) = **8.5 months**
-- Average staff: 1.6 full-time people
-
-### 3.5 Comparison with team capacity
-
-| | Effort | Hours (152 h/PM [2]) | Duration |
-|---|---|---|---|
-| Basic COCOMO | 7.1 PM | 1,080 h | 5.3 months |
-| COCOMO II | 13.6 PM | 2,075 h | 8.5 months |
-| **Team capacity** | **6.3 PM** | **952 h** | **7 months (28 weeks)** |
-
-- Capacity: 4 students × 28 weeks × 8.5 h/week. 8.5 h/week comes from the Sprint 1 plan: 102 h of estimated tasks for 4 people in 3 weeks.
-- Basic COCOMO is about 13% above the capacity. COCOMO II is about 2.2 times the capacity, mainly because it rates the team as inexperienced (ACAP, PCAP, APEX, PREC, PMAT).
-- COCOMO II is our upper bound. To stay within capacity, we build the core path first (F2–F6), reuse existing code where possible (MiroTalk recording, EMIP-Toolkit parsers, the original STA code), and keep the research pipeline (F9, F10) as scripts.
-- We compare these estimates with the hours we log per issue and update them at the end of each sprint.
-
-### 3.6 Assumptions to defend
+### 3.7 Assumptions
 
 | Input | Value | Source / reason |
 |---|---|---|
-| Size | 2.81 KSLOC | `cloc` on analog open-source code per module, see 3.2; code view (150) is a team estimate |
-| Libraries | 0 SLOC | We only call MediaPipe, L2CS-Net and NumPy, we do not change them |
-| MiroTalk reuse | 826 → 385 ESLOC | COCOMO II reuse model [2] |
-| Hours per PM | 152 | COCOMO II default [2] |
+| FP count | 125 UTFP, VAF 1.06 | IFPUG count by the team, one counter |
+| LOC per FP, JavaScript | 47 | QSM table [3] |
+| LOC per FP, Python | 53.33 | Jones (2017) [4]; not in the QSM table |
+| Language shares | 34% / 66% | Analogy, 3.5 |
+| Jones class | Business | DECODE is an information system: sessions, records, reports |
+| Hours per PM | 152 | Boehm (1981) [1] |
 | Weekly hours per student | 8.5 | Sprint 1 plan |
 | Project length | 28 weeks | Two semesters |
 | Mode | Organic | Small team, no hard constraints |
@@ -116,14 +117,18 @@ The project is organic: a small team, a familiar environment, and no hard hardwa
 
 [1] Boehm, B. W. (1981). *Software engineering economics*. Prentice Hall.
 
-[2] Center for Software Engineering, University of Southern California. (2000). *COCOMO II model definition manual* (Version 2.1).
+[2] CNG491 Lecture 3. (2026). *Software estimation*, slides 48–49: Jones's first-order estimation. METU NCC.
 
-[3] Papoutsaki, A., et al. (n.d.). *WebGazer.js* [Computer software]. GitHub. https://github.com/brownhci/WebGazer
+[3] QSM. (n.d.). *Function point languages table* (Version 5.0). https://www.qsm.com/resources/function-point-languages-table
 
-[4] Al Madi, N., et al. (n.d.). *EMIP-Toolkit* [Computer software]. GitHub. https://github.com/nalmadi/EMIP-Toolkit
+[4] Jones, C. (2017). *Software economics and function point metrics: Thirty years of IFPUG progress* (Version 10.0, Appendix B, Table 16). Namcook Analytics. https://www.ifpug.org/wp-content/uploads/2017/04/IYSM.-Thirty-years-of-IFPUG.-Software-Economics-and-Function-Point-Metrics-Capers-Jones.pdf
 
-[5] Eraslan, S. (n.d.). *STA: Scanpath trend analysis* [Computer software]. GitHub. https://github.com/SukruEraslan/sta
+[5] Papoutsaki, A., et al. (n.d.). *WebGazer.js* [Computer software]. GitHub. https://github.com/brownhci/WebGazer
 
-[6] *eyetracking_classification* [Computer software]. (n.d.). GitHub. https://github.com/Gittingthehubbing/eyetracking_classification
+[6] Al Madi, N., et al. (n.d.). *EMIP-Toolkit* [Computer software]. GitHub. https://github.com/nalmadi/EMIP-Toolkit
 
-[7] Pejic, M. (n.d.). *MiroTalk SFU* [Computer software]. GitHub. https://github.com/miroslavpejic85/mirotalksfu
+[7] Eraslan, S. (n.d.). *STA: Scanpath trend analysis* [Computer software]. GitHub. https://github.com/SukruEraslan/sta
+
+[8] Pejic, M. (n.d.). *MiroTalk SFU* [Computer software]. GitHub. https://github.com/miroslavpejic85/mirotalksfu
+
+[9] *eyetracking_classification* [Computer software]. (n.d.). GitHub. https://github.com/Gittingthehubbing/eyetracking_classification
