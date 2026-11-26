@@ -65,8 +65,8 @@
 
 ## Diagrams
 
-- Use PlantUML syntax for all diagrams (context, use case, etc.)
-- ERD must be Chen notation in draw.io, not PlantUML
+- Draw all diagrams in draw.io: keep the `.drawio` file and an exported PNG side by side
+- ERD must be Chen notation
 - Use Figma for UI design
 - Per-type rules: `.claude/skills/diagramming/SKILL.md`
 - Keep diagrams simple: easy to follow at a glance, few elements, no clutter

@@ -8,7 +8,7 @@ description: Diagram rules from CNG350/CNG351 for SRS/SDD work. Use when drawing
 Sources: CNG350 lectures/solutions/rubric, CNG351 notes. Keep diagrams simple, labels short.
 
 ## General
-- PlantUML for everything except ERD (Chen, draw.io).
+- draw.io for every diagram (`.drawio` + exported PNG). Old PlantUML files stay until redrawn.
 - Unreadable diagram = not graded. Same style across the report.
 - Few elements, left-to-right, no crossing lines where avoidable.
 
