@@ -35,7 +35,7 @@ Part of DECODE is ready code: MiroTalk SFU gives the video room, recording and u
 | Python | 66% | 53.33 | Jones (2017), Table 16 [4]; the QSM table has no Python value |
 | **Weighted** | | **51.18** | |
 
-The language shares come from the analogy in 3.5 (823 JavaScript and 1,602 Python SLOC).
+The language shares come from the analogy in 3.5 (823 JavaScript and 1,602 Python SLOC). Jones gives Python the same value as Java, while scripting languages usually need fewer lines, so the Python size may be an upper bound.
 
 | Scenario | ATFP | Size |
 |---|---|---|
