@@ -10,11 +10,10 @@
 
 DEC-28, DEC-32, DEC-41, DEC-46, DEC-55, DEC-56, DEC-57, DEC-58, DEC-59, DEC-60, DEC-63, DEC-71, DEC-72
 
-## Cycle 3'e geçen açık işler (20 issue, bitince Cycle 2'ye alınacak)
+## Cycle 3'e geçen açık işler (19 issue, bitince Cycle 2'ye alınacak)
 
 | Issue | Konu | Kişi | Durum (26 Kasım) |
 |---|---|---|---|
-| DEC-73 | SDD birleştirme | Mehmet | Todo |
 | DEC-74 | SDD activity diyagramları | İrem | In Progress |
 | DEC-75 | SDD sequence diyagramları | İrem | In Progress |
 | DEC-76 | SDD class diyagramı | Sude | Todo |
@@ -34,3 +33,5 @@ DEC-28, DEC-32, DEC-41, DEC-46, DEC-55, DEC-56, DEC-57, DEC-58, DEC-59, DEC-60, 
 | DEC-67 | STA trending path | Burcu | Todo |
 | DEC-68 | String matching | Burcu | Todo |
 | DEC-21 | 6 proposal makalesi | İrem | Todo |
+
+DEC-73 (SDD birleştirme) 26 Kasım'da iptal edildi (Mehmet kararı).
