@@ -74,7 +74,8 @@
 
 ## Actors
 
-- Developer: the person being interviewed. Never say "candidate"
+- Developer: the person being interviewed. Never say "candidate" in text
+- Exception: diagrams use "Candidate" for this actor (team decision, 26 Nov 2026)
 - Interviewer: the person who runs the interview. Does not have to be HR; say so when you define it
 
 ## Reports and presentations
