@@ -1,0 +1,64 @@
+@startgantt gantt
+title Term plan: tasks (T) and milestones (M)
+footer Colors: Mehmet = blue, İrem = green, Sude = orange, Burcu = pink, shared = gray
+Project starts 2026-10-07
+printscale weekly
+language en
+
+[M1 Meeting 1] happens 2026-10-07
+[T1 Proposal papers (all)] starts 2026-10-13 and ends 2026-10-20
+[T1 Proposal papers (all)] is colored in LightGray
+[T2 Team setup (Mehmet)] starts 2026-10-13 and ends 2026-10-22
+[T2 Team setup (Mehmet)] is colored in LightBlue
+[T3 Meet capture + gaze libraries (Mehmet)] starts 2026-10-13 and ends 2026-10-20
+[T3 Meet capture + gaze libraries (Mehmet)] is colored in LightBlue
+
+[M2 Meeting 2] happens 2026-10-21
+[T4 Video platform choice (Burcu + Mehmet)] starts 2026-10-21 and ends 2026-10-27
+[T4 Video platform choice (Burcu + Mehmet)] is colored in LightGray
+[T5 Dataset list (Sude)] starts 2026-10-23 and ends 2026-10-26
+[T5 Dataset list (Sude)] is colored in Orange
+[T6 SRS related work + references (Burcu)] starts 2026-10-23 and ends 2026-10-27
+[T6 SRS related work + references (Burcu)] is colored in Pink
+[T7 SRS requirements + functions (all)] starts 2026-10-23 and ends 2026-10-27
+[T7 SRS requirements + functions (all)] is colored in LightGray
+[T8 SRS review + slides (Mehmet + Sude)] starts 2026-10-26 and ends 2026-10-27
+[T8 SRS review + slides (Mehmet + Sude)] is colored in LightGray
+[M3 SRS delivered] happens 2026-10-27
+
+[T11 Surveys + dataset questions (Sude + Burcu)] starts 2026-10-28 and ends 2026-11-26
+[T11 Surveys + dataset questions (Sude + Burcu)] is colored in LightGray
+[M4 Meeting 3] happens 2026-11-04
+[T9 Presentation prep (Mehmet + Sude + Burcu)] starts 2026-11-04 and ends 2026-11-08
+[T9 Presentation prep (Mehmet + Sude + Burcu)] is colored in LightGray
+[M5 SRS presentation] happens 2026-11-09
+[T10 SRS feedback fixes (Burcu + Mehmet)] starts 2026-11-10 and ends 2026-11-26
+[T10 SRS feedback fixes (Burcu + Mehmet)] is colored in LightGray
+
+[M6 Meeting 4] happens 2026-11-19
+[T12 Gaze test (İrem)] starts 2026-11-19 and ends 2026-11-26
+[T12 Gaze test (İrem)] is colored in LightGreen
+[T13 MiroTalk + STA setup (Mehmet)] starts 2026-11-19 and ends 2026-11-26
+[T13 MiroTalk + STA setup (Mehmet)] is colored in LightBlue
+[T14 Java code + AOI Mapper (Sude)] starts 2026-11-19 and ends 2026-11-22
+[T14 Java code + AOI Mapper (Sude)] is colored in Orange
+[T15 AOI lists (İrem)] starts 2026-11-22 and ends 2026-11-24
+[T15 AOI lists (İrem)] is colored in LightGreen
+[T16 Trending paths + matching (Burcu)] starts 2026-11-24 and ends 2026-11-26
+[T16 Trending paths + matching (Burcu)] is colored in Pink
+[T17 Calibration UI (İrem)] starts 2026-11-19 and ends 2026-11-26
+[T17 Calibration UI (İrem)] is colored in LightGreen
+
+[T18 SDD diagrams and sections (Mehmet + İrem + Sude)] starts 2026-11-23 and ends 2026-11-26
+[T18 SDD diagrams and sections (Mehmet + İrem + Sude)] is colored in LightGray
+[T19 SDD 5.1 + 5.2 + glossary (Burcu)] starts 2026-11-23 and ends 2026-11-26
+[T19 SDD 5.1 + 5.2 + glossary (Burcu)] is colored in Pink
+[T20 SDD merge + check (Mehmet)] starts 2026-11-25 and ends 2026-11-26
+[T20 SDD merge + check (Mehmet)] is colored in LightBlue
+[M7 SDD delivered] happens 2026-11-27
+[T21 SDD slides (all)] starts 2026-11-27 and ends 2026-11-29
+[T21 SDD slides (all)] is colored in LightGray
+[M8 SDD slides delivered] happens 2026-11-29
+[T22 Video stream demo (Mehmet)] starts 2026-11-27 and ends 2026-12-08
+[T22 Video stream demo (Mehmet)] is colored in LightBlue
+@endgantt
