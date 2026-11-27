@@ -58,3 +58,47 @@ C: 5.2.1 Backlog tablosunun Owner sütunu.
 
 **S15 [R] Sprint 1 iyileştirmeleri uygulandı mı?**
 C: Retro'daki Sprint 1 eylemleri tablosu.
+
+## Tur 2 (27 Kasım)
+
+Ana çizgi: DECODE araştırma odaklı bir bitirme projesi. Soru: STA, webcam göz takibiyle tek bir developer'ı değerlendirebilir mi? MiroTalk, sunucu ve arayüz bunu göstermek için bir proof of concept.
+
+**T1 [R/limitation] Eye tracker dataset'i ile webcam verisini karşılaştırmak adil mi?**
+C: Olabildiğince. Bu bilinen bir limitation: her developer'a eye tracker veremeyiz. Amaç, kaliteli eye tracker verisinden çıkan yolları webcam ile kullanılabilir hale getirmek.
+
+**T2 [R/limitation] Başka kod, başka dil?**
+C: Şu an dile ve koda bağımlıyız. Dataset'lerde ortak Java kodu az; kod sayısını dataset'lerden artırmaya çalışıyoruz.
+
+**T3 [R] Neden iki sınıf, orta seviye nerede?**
+C: Dataset'ler sadece novice ve experienced grupları topluyor; biz de onları izliyoruz.
+
+**T4 [R] Neden ML değil de STA?**
+C: Proje önerisinde STA tanımlı ve araştırma sorusu tam olarak STA'nın tek developer için çalışıp çalışmadığı. STA grupların ortak okuma yolunu bulmakta kullanılmış bir yöntem (Ahsan & Obaidellah, 2023).
+
+**T5 [E] Dataset sınıfı runtime'da ne yapıyor?** — Sude'ye (DEC-76) bakılacak.
+
+**T6 [H] Confidence nasıl hesaplanıyor?**
+C: Henüz hesaplamadık. Kamera kalitesi, FPS, kullanıcının kameraya göre konumu ve kalibrasyon hatasından bir değer çıkaracağız. Sonuç makineye göre değişir; confidence bunu göstermek için.
+
+**T7 [H] Benzerlik ölçüsü ve eşitlik?**
+C: Scanpath'i nasıl kodladığımıza bağlı (ör. AOI dizisi → edit distance). İleriki sprintte yöntemleri test edip seçeceğiz.
+
+**T8 [H] Baş hareketi / ışık kalibrasyonu bozar mı?**
+C: Henüz test etmedik.
+
+**T9 [E] DFD design rationale nerede?** — Sude'den eklemesi istendi (DEC-77).
+
+**T10–T11 [R] Tek sunucu, ölçeklenme, veri nerede?**
+C: Proof of concept. Odak ölçeklenme değil, STA'nın webcam ile tek developer'da çalışıp çalışmadığı.
+
+**T12 [H] Ground truth nereden?**
+C: Henüz planlamadık. Fikir: novice olarak proje ekibi, experienced olarak deneyimli katılımcılar (ör. hocalar).
+
+**T13 [H] Gözlük, ışık, ekran önyargısı?**
+C: Etkisini azaltacak adımlar atacağız; ekibin 4 kişiden 3'ü gözlüklü. Henüz test etmedik.
+
+**T14 [H] İzlendiğini bilen developer farklı okur mu?**
+C: Stres altında okuma görüşmenin doğasında var. İleride "experienced taklidi yapan novice"i model ayırabiliyor mu diye bakılabilir.
+
+**T15 [hocaya sorulacak] COCOMO ile Gantt tutuyor mu?**
+C: Function Point ile COCOMO çok yüksek çıktı; analoji ve açık kaynak projelerle karşılaştırdık. Sunumda profesöre soracağız: "Fazla çıkıyor; nasıl ilerlememizi önerirsiniz?"
