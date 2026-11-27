@@ -10,7 +10,7 @@ Kararlar:
 - Actor adı "Candidate" (SRS ile aynı). Mehmet onayladı (DEC-54, 26 Kasım).
 
 Açık noktalar:
-- Lifeline adları ders kuralına göre rol adı (Screen, Controller, Service, Database; marks were lost without them). DEC-72 karşılığı: Interviewer Screen = Recording Control, Session Controller = Session Backend, Candidate Screen = Consent Dialog + Calibration View + Code View + Webcam Recorder, Analysis Service = Analysis Pipeline, Report Screen = Report View, Report Controller = Session Backend içinde. Mehmet'le eşitlenmesi konuşulmalı (DEC-76 class adları da).
+- Lifeline adları ders kuralına göre rol adı (Screen, Controller, Service, Database). DEC-72 component diyagramı bu adlara çekildi (27 Kasım, Mehmet). Candidate Screen = Consent Dialog + Calibration View + Code View + Webcam Recorder. DEC-76 class adları da bu sete uymalı.
 - Eşik ve N değeri henüz yok (DEC-39).
 
 ---
