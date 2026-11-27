@@ -51,7 +51,7 @@ C: Yerel kaydın sebebi WebRTC sıkıştırması. Yükleme hatası ve kod dış�
 C: Burcu'ya soruldu (DEC-78).
 
 **S13 [R] Tahmin ile gerçek saat farkı?**
-C: Önceki sprintlerden öğrenerek tahmin ediyoruz. Fark her zaman olur; burndown'da ideal ve gerçek çizgi yan yana.
+C: Saatler yaklaşık; önceki sprintlerden öğrenerek tahmin ettik ve bu sprintte toplamda tuttu. Haftalık dağılım farklı, burndown'da ideal ve gerçek çizgi bunu gösteriyor.
 
 **S14 [R] Kim ne yaptı?**
 C: 5.2.1 Backlog tablosunun Owner sütunu.
